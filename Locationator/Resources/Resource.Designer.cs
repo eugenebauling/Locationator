@@ -60,11 +60,11 @@ namespace Locationator
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050001
-			public const int gpsRequestButton = 2131034113;
-			
 			// aapt resource value: 0x7f050000
-			public const int gpsText = 2131034112;
+			public const int gpsRequestButton = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int gpsText = 2131034113;
 			
 			static Id()
 			{

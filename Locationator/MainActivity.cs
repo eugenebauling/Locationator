@@ -16,7 +16,7 @@ namespace Locationator
 
         private LocationManager locMgr;
         private const string tag = "MainActivity";
-        private GPSPointProvider gpsPoints;
+        private GpsPointProvider gpsPoints;
 
         #region Controls
 
@@ -32,7 +32,7 @@ namespace Locationator
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
             locMgr = GetSystemService(Context.LocationService) as LocationManager;
-            gpsPoints = new GPSPointProvider(locMgr);
+            gpsPoints = new GpsPointProvider(locMgr);
             gpsPoints.StartGettingLocationPoints();
 
             gpsText = FindViewById<TextView>(Resource.Id.gpsText);
@@ -44,6 +44,7 @@ namespace Locationator
         protected override void OnResume()
         {
             base.OnResume();
+            
             gpsPoints.StartGettingLocationPoints();
             gpsText.Text += GetGpsPointText() + "\r\n";
 
@@ -67,7 +68,7 @@ namespace Locationator
 
         private string GetGpsPointText()
         {
-            return "Longitude: " + gpsPoints.CurrentLongitude + "; Latitude: " + gpsPoints.CurrentLatitude;
+            return "Longitude: " + gpsPoints.CurrentLongitude + "; Latitude: " + gpsPoints.CurrentLatitude + "; Accuracy: " + gpsPoints.CurrentAccuracy;
         }
 
         private void LinkEvents()
