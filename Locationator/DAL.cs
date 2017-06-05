@@ -28,7 +28,7 @@ namespace Locationator
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Headers[HttpRequestHeader.Accept] = "application/json";
             var sourceUrl = new Uri(Constants.URL_SAVE_LOCATION_POINT);
-            var data = "{ 'RecordedTime': '" + DateTime.Now + "', 'Description': '" + Android.OS.Build.Model +  "', 'Longitude': '" + longitude + "', 'Latitude': '" + latitude + "', 'Accuracy': '" + accuracy + "' }";
+            var data = "{ 'RecordedTime': '" + DateTime.UtcNow + "', 'Description': '" + Android.OS.Build.Model + " - " + Android.OS.Build.Serial + "', 'Longitude': '" + longitude + "', 'Latitude': '" + latitude + "', 'Accuracy': '" + accuracy + "' }";
             client.UploadStringAsync(sourceUrl, "POST", data);
         }
 
@@ -42,7 +42,7 @@ namespace Locationator
 
         public void SaveLocationPoint(double latitude, double longitude, int accuracy)
         {
-            var data = "{ 'RecordedTime': '" + DateTime.UtcNow + "', 'Description': '" + Android.OS.Build.Model + "', 'Longitude': '" + longitude + "', 'Latitude': '" + latitude + "', 'Accuracy': '" + accuracy + "' }";
+            var data = "{ 'RecordedTime': '" + DateTime.UtcNow + "', 'Description': '" + Android.OS.Build.Model + " - " + Android.OS.Build.Serial + "', 'Longitude': '" + longitude + "', 'Latitude': '" + latitude + "', 'Accuracy': '" + accuracy + "' }";
             var request = HttpWebRequest.Create(Constants.URL_SAVE_LOCATION_POINT);
             request.ContentType = "application/json";
             request.Method = "POST";
