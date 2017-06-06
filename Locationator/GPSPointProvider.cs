@@ -89,7 +89,7 @@ namespace Locationator
                 if (location.HasAccuracy)
                     currentAccuracy = location.Accuracy;
 
-                dal.SaveLocationPoint(currentLat, currentLong, Convert.ToInt32(currentAccuracy));
+                dal.SaveLocationPoint(FormatCoordinate(currentLat), FormatCoordinate(currentLong), Convert.ToInt32(currentAccuracy));
 
                 Log.Info(tag, "Longitude: " + currentLong + "; Latitude: " + currentLat + "; Accuracy: " + currentAccuracy);
             }
@@ -111,6 +111,11 @@ namespace Locationator
                 StartGettingLocationPoints();
             else
                 StopGettingLocationPoints();
+        }
+
+        private string FormatCoordinate(double coord)
+        {
+            return Location.Convert(coord, Format.Degrees).Replace(',', '.');
         }
     }
 }

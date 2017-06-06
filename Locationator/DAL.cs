@@ -20,7 +20,7 @@ namespace Locationator
     {
         private const string tag = "DAL";
 
-        public void SaveLocationPointAsync(double latitude, double longitude, int accuracy)
+        public void SaveLocationPointAsync(string latitude, string longitude, int accuracy)
         {
             var client = new WebClient();
             client.UploadStringCompleted +=
@@ -40,7 +40,7 @@ namespace Locationator
                 Log.Info(tag, "DAL Success");
         }
 
-        public void SaveLocationPoint(double latitude, double longitude, int accuracy)
+        public void SaveLocationPoint(string latitude, string longitude, int accuracy)
         {
             var data = "{ 'RecordedTime': '" + DateTime.UtcNow + "', 'Description': '" + Android.OS.Build.Model + " - " + Android.OS.Build.Serial + "', 'Longitude': '" + longitude + "', 'Latitude': '" + latitude + "', 'Accuracy': '" + accuracy + "' }";
             var request = HttpWebRequest.Create(Constants.URL_SAVE_LOCATION_POINT);
