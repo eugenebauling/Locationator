@@ -82,14 +82,17 @@ namespace Locationator
 
         public void OnLocationChanged(Location location)
         {
-            currentLat = location.Latitude;
-            currentLong = location.Longitude;
-            if (location.HasAccuracy)
-                currentAccuracy = location.Accuracy;
+            if (currentLat != location.Latitude || currentLong != location.Longitude)
+            {
+                currentLat = location.Latitude;
+                currentLong = location.Longitude;
+                if (location.HasAccuracy)
+                    currentAccuracy = location.Accuracy;
 
-            dal.SaveLocationPoint(currentLat, currentLong, Convert.ToInt32(currentAccuracy));
+                dal.SaveLocationPoint(currentLat, currentLong, Convert.ToInt32(currentAccuracy));
 
-            Log.Info(tag, "Longitude: " + currentLong + "; Latitude: " + currentLat + "; Accuracy: " + currentAccuracy);
+                Log.Info(tag, "Longitude: " + currentLong + "; Latitude: " + currentLat + "; Accuracy: " + currentAccuracy);
+            }
         }
 
         public void OnProviderDisabled(string provider)
