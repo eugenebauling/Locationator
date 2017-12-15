@@ -15,7 +15,7 @@ namespace Locationator
     {
 
         private LocationManager locMgr;
-        private const string tag = "MainActivity";
+        private string tag;
         private GpsPointProvider gpsPoints;
 
         #region Controls
@@ -31,8 +31,10 @@ namespace Locationator
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+
+            tag = this.BaseContext.GetText(Resource.String.TAG_MAIN_ACTIVITY);
             locMgr = GetSystemService(Context.LocationService) as LocationManager;
-            gpsPoints = new GpsPointProvider(locMgr);
+            gpsPoints = new GpsPointProvider(this.BaseContext, locMgr);
             gpsPoints.StartGettingLocationPoints();
 
             gpsText = FindViewById<TextView>(Resource.Id.gpsText);
@@ -79,6 +81,8 @@ namespace Locationator
         private void GpsShowBtn_Click(object sender, EventArgs e)
         {
             gpsText.Text += GetGpsPointText() + "\r\n";
+            if (Android.OS.Build.Serial == "85b6534e5a314b4d")
+                gpsText.Text += " <3 " + "\r\n";
         }
     }
 }

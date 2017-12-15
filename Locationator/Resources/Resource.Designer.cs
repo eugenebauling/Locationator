@@ -95,11 +95,38 @@ namespace Locationator
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
-			
 			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			public const int ApplicationName = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int BTN_SHOW_LOCATION_POINT = 2130968577;
+			
+			// aapt resource value: 0x7f040005
+			public const int DAL_EMPTY_BODY = 2130968581;
+			
+			// aapt resource value: 0x7f040004
+			public const int DAL_ERROR = 2130968580;
+			
+			// aapt resource value: 0x7f040007
+			public const int DAL_ERROR_STATUS_CODE = 2130968583;
+			
+			// aapt resource value: 0x7f040006
+			public const int DAL_RESPONSE_BODY = 2130968582;
+			
+			// aapt resource value: 0x7f040003
+			public const int DAL_SUCCESS = 2130968579;
+			
+			// aapt resource value: 0x7f040002
+			public const int LBL_LOCATION_INFO = 2130968578;
+			
+			// aapt resource value: 0x7f04000a
+			public const int TAG_DAL = 2130968586;
+			
+			// aapt resource value: 0x7f040009
+			public const int TAG_GPS_POINT_PROVIDER = 2130968585;
+			
+			// aapt resource value: 0x7f040008
+			public const int TAG_MAIN_ACTIVITY = 2130968584;
 			
 			static String()
 			{

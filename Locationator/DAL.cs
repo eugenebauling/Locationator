@@ -13,12 +13,20 @@ using System.Net;
 using System.ComponentModel;
 using Android.Util;
 using System.IO;
+using Android.Content.Res;
 
 namespace Locationator
 {
     public class DAL: Java.Lang.Object
     {
-        private const string tag = "DAL";
+        private string tag;
+        private Context context;
+
+        public DAL(Context _context)
+        {
+            tag = _context.GetText(Resource.String.TAG_DAL);
+            context = _context;
+        }
 
         public void SaveLocationPointAsync(string latitude, string longitude, int accuracy)
         {
@@ -35,9 +43,9 @@ namespace Locationator
         private void client_UploadStringCompleted(object sender, AsyncCompletedEventArgs e)
         {
             if (e.Error != null)
-                Log.Info(tag, "DAL Error: " + e.Error.Message);
+                Log.Info(tag, context.GetText(Resource.String.DAL_SUCCESS) + " " + e.Error.Message);
             else
-                Log.Info(tag, "DAL Success");
+                Log.Info(tag, context.GetText(Resource.String.DAL_SUCCESS));
         }
 
         public void SaveLocationPoint(string latitude, string longitude, int accuracy)
@@ -61,17 +69,17 @@ namespace Locationator
             using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
             {
                 if (response.StatusCode != HttpStatusCode.OK)
-                    Log.Info(tag, "Error fetching data. Server returned status code: " + response.StatusCode);
+                    Log.Info(tag, context.GetText(Resource.String.DAL_ERROR_STATUS_CODE) + " " + response.StatusCode);
                 using (StreamReader reader = new StreamReader(response.GetResponseStream()))
                 {
                     var content = reader.ReadToEnd();
                     if (string.IsNullOrWhiteSpace(content))
                     {
-                        Log.Info(tag, "Response Contained empty body: " + response.StatusCode);
+                        Log.Info(tag, context.GetText(Resource.String.DAL_EMPTY_BODY) + " " + response.StatusCode);
                     }
                     else
                     {
-                        Log.Info(tag, "Response Body: \r\n" + content);
+                        Log.Info(tag, context.GetText(Resource.String.DAL_RESPONSE_BODY) + " \r\n" + content);
                     }
                 }
             }

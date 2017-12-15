@@ -21,17 +21,18 @@ namespace Locationator
         private double currentLong = 0.0;
         private double currentLat = 0.0;
         private float currentAccuracy = 0;
-        private const string tag = "GPSPointProvider";
+        private string tag;
         private DAL dal;
 
         public double CurrentLatitude { get { return currentLat; } }
         public double CurrentLongitude { get { return currentLong; } }
         public float CurrentAccuracy { get { return currentAccuracy; } }
 
-        public GpsPointProvider(LocationManager _locMgr)
+        public GpsPointProvider(Context _context, LocationManager _locMgr)
         {
+            tag = _context.GetText(Resource.String.TAG_GPS_POINT_PROVIDER);
             locMgr = _locMgr;
-            dal = new DAL();
+            dal = new DAL(_context);
             Log.Info(tag, "Location Manager " + locMgr);
         }
 

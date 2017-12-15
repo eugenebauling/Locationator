@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">Locationator</string>
+  
+    <string name="BTN_SHOW_LOCATION_POINT">Show location point</string>
+  
+    <string name="LBL_LOCATION_INFO">Location Info</string>
+
+    <string name="DAL_SUCCESS">DAL Success</string>
+    <string name="DAL_ERROR">DAL Error</string>
+    <string name="DAL_EMPTY_BODY">"Response Contained empty body:</string>
+    <string name="DAL_RESPONSE_BODY">"Response Body:</string>
+    <string name="DAL_ERROR_STATUS_CODE">"Response Body:</string>
+
+    <string name="TAG_MAIN_ACTIVITY">MainActivity</string>
+    <string name="TAG_GPS_POINT_PROVIDER">GPSPointProvider</string>
+    <string name="TAG_DAL">DAL</string>
 </resources>
