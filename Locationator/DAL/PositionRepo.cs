@@ -13,28 +13,17 @@ using Locationator.Enums;
 
 namespace Locationator.DAL
 {
-    public static class PositionRepo
+    public class PositionRepo : BaseRepo<IPositionRepo>
     {
-        public static IPositionRepo Instance(Context context)
+        public override IPositionRepo Instance(Context context)
         {
-            switch (Constants.DATA_ACCESS_MODE)
+            switch (Settings.DataAccessMode)
             {
                 case DataAccessMode.WebService:
-                    return GetRepo<WebService>(context);
+                    return base.GetRepo<PositionWebService>(context);
                 default:
-                    return GetRepo<NoDal>(context); ;
+                    return base.GetRepo<NoDal>(context);
             }
-
         }
-
-        private static IPositionRepo repo;
-        private static IPositionRepo GetRepo<T>(Context context)
-        {
-            if (repo == null)
-                repo = (IPositionRepo)Activator.CreateInstance(typeof(T), new object[] { context });
-
-            return repo;
-        }
-
     }
 }

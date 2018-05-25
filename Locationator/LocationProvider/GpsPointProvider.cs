@@ -35,7 +35,7 @@ namespace Locationator.LocationProvider
         {
             tag = _context.GetText(Resource.String.TAG_GPS_POINT_PROVIDER);
             locMgr = _locMgr;
-            repo = PositionRepo.Instance(_context);
+            repo = RepoManager.GetPositionRepo().Instance(_context);
             Log.Info(tag, "Location Manager " + locMgr);
         }
 
@@ -45,7 +45,7 @@ namespace Locationator.LocationProvider
 
             #region Request Location Way 1
 
-            if (Constants.GPS_LOCATION_COLLECTION_MODE == GpsPointCollectionMode.SystemSpecified)
+            if (Settings.GpsLocationMode == GpsPointCollectionMode.SystemSpecified)
             {
                 Criteria locationCriteria = new Criteria();
 
@@ -68,7 +68,7 @@ namespace Locationator.LocationProvider
 
             #region Request Location Way 2
 
-            if (Constants.GPS_LOCATION_COLLECTION_MODE == GpsPointCollectionMode.Manual)
+            if (Settings.GpsLocationMode == GpsPointCollectionMode.Manual)
             {
 
                 locMgr.RequestLocationUpdates(LocationManager.GpsProvider, Constants.GPS_LOCATION_UPDATE_INTERVAL_TIME, Constants.GPS_LOCATION_UPDATE_INTERVAL_DISTANCE_METRES, this);

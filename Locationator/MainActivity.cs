@@ -33,6 +33,7 @@ namespace Locationator
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
+            Settings.SetDefaults();
             tag = this.BaseContext.GetText(Resource.String.TAG_MAIN_ACTIVITY);
             locMgr = GetSystemService(Context.LocationService) as LocationManager;
             gpsPoints = new GpsPointProvider(this.BaseContext, locMgr);

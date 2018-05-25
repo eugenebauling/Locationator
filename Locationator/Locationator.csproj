@@ -65,10 +65,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="DAL\BaseRepo.cs" />
     <Compile Include="DAL\IPositionRepo.cs" />
     <Compile Include="DAL\NoDal.cs" />
     <Compile Include="DAL\PositionRepo.cs" />
-    <Compile Include="DAL\WebService.cs" />
+    <Compile Include="DAL\PositionWebService.cs" />
+    <Compile Include="DAL\RepoManager.cs" />
     <Compile Include="Enums\DataAccessMode.cs" />
     <Compile Include="Enums\GpsPointCollectionMode.cs" />
     <Compile Include="LocationProvider\GpsPointProvider.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Models\GpsPosition.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

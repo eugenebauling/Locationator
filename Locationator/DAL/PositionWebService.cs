@@ -19,12 +19,12 @@ using Newtonsoft.Json;
 
 namespace Locationator.DAL
 {
-    public class WebService: IPositionRepo
+    public class PositionWebService: IPositionRepo
     {
         private string tag;
         private Context _context;
 
-        public WebService(Context context)
+        public PositionWebService(Context context)
         {
             _context = context;
             tag = _context.GetText(Resource.String.TAG_DAL);
