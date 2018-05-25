@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Locationator.Models;
 
 using Android.App;
 using Android.Content;
@@ -14,21 +15,22 @@ using System.ComponentModel;
 using Android.Util;
 using System.IO;
 using Android.Content.Res;
+using Newtonsoft.Json;
 
-namespace Locationator
+namespace Locationator.DAL
 {
-    public class DAL: Java.Lang.Object
+    public class WebService: IPositionRepo
     {
         private string tag;
-        private Context context;
+        private Context _context;
 
-        public DAL(Context _context)
+        public WebService(Context context)
         {
+            _context = context;
             tag = _context.GetText(Resource.String.TAG_DAL);
-            context = _context;
         }
 
-        public void SaveLocationPointAsync(string latitude, string longitude, int accuracy)
+        public void SaveLocationPointAsync(GpsPosition pos)
         {
             var client = new WebClient();
             client.UploadStringCompleted +=
@@ -36,21 +38,22 @@ namespace Locationator
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Headers[HttpRequestHeader.Accept] = "application/json";
             var sourceUrl = new Uri(Constants.URL_SAVE_LOCATION_POINT);
-            var data = "{ 'RecordedTime': '" + DateTime.UtcNow + "', 'Description': '" + Android.OS.Build.Model + " - " + Android.OS.Build.Serial + "', 'Longitude': '" + longitude + "', 'Latitude': '" + latitude + "', 'Accuracy': '" + accuracy + "' }";
+            var data = JsonConvert.SerializeObject(pos);
             client.UploadStringAsync(sourceUrl, "POST", data);
         }
 
         private void client_UploadStringCompleted(object sender, AsyncCompletedEventArgs e)
         {
             if (e.Error != null)
-                Log.Info(tag, context.GetText(Resource.String.DAL_SUCCESS) + " " + e.Error.Message);
+                Log.Info(tag, _context.GetText(Resource.String.DAL_ERROR) + " " + e.Error.Message);
             else
-                Log.Info(tag, context.GetText(Resource.String.DAL_SUCCESS));
+                Log.Info(tag, _context.GetText(Resource.String.DAL_SUCCESS));
         }
 
-        public void SaveLocationPoint(string latitude, string longitude, int accuracy)
+        public void SaveLocationPoint(GpsPosition pos)
         {
-            var data = "{ 'RecordedTime': '" + DateTime.UtcNow + "', 'Description': '" + Android.OS.Build.Model + " - " + Android.OS.Build.Serial + "', 'Longitude': '" + longitude + "', 'Latitude': '" + latitude + "', 'Accuracy': '" + accuracy + "' }";
+            var data = JsonConvert.SerializeObject(pos);
+
             var request = HttpWebRequest.Create(Constants.URL_SAVE_LOCATION_POINT);
             request.ContentType = "application/json";
             request.Method = "POST";
@@ -69,17 +72,17 @@ namespace Locationator
             using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
             {
                 if (response.StatusCode != HttpStatusCode.OK)
-                    Log.Info(tag, context.GetText(Resource.String.DAL_ERROR_STATUS_CODE) + " " + response.StatusCode);
+                    Log.Info(tag, _context.GetText(Resource.String.DAL_ERROR_STATUS_CODE) + " " + response.StatusCode);
                 using (StreamReader reader = new StreamReader(response.GetResponseStream()))
                 {
                     var content = reader.ReadToEnd();
                     if (string.IsNullOrWhiteSpace(content))
                     {
-                        Log.Info(tag, context.GetText(Resource.String.DAL_EMPTY_BODY) + " " + response.StatusCode);
+                        Log.Info(tag, _context.GetText(Resource.String.DAL_EMPTY_BODY) + " " + response.StatusCode);
                     }
                     else
                     {
-                        Log.Info(tag, context.GetText(Resource.String.DAL_RESPONSE_BODY) + " \r\n" + content);
+                        Log.Info(tag, _context.GetText(Resource.String.DAL_RESPONSE_BODY) + " \r\n" + content);
                     }
                 }
             }

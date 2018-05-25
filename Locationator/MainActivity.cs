@@ -7,6 +7,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Locations;
 using Android.Util;
+using Locationator.LocationProvider;
 
 namespace Locationator
 {
@@ -81,8 +82,6 @@ namespace Locationator
         private void GpsShowBtn_Click(object sender, EventArgs e)
         {
             gpsText.Text += GetGpsPointText() + "\r\n";
-            if (Android.OS.Build.Serial == "85b6534e5a314b4d")
-                gpsText.Text += " <3 " + "\r\n";
         }
     }
 }

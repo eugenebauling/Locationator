@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Locationator.Models;
 
 using Android.App;
 using Android.Content;
@@ -11,8 +12,10 @@ using Android.Views;
 using Android.Widget;
 using Android.Locations;
 using Android.Util;
+using Locationator.Enums;
+using Locationator.DAL;
 
-namespace Locationator
+namespace Locationator.LocationProvider
 {
 
     public class GpsPointProvider: Java.Lang.Object, ILocationListener
@@ -21,8 +24,8 @@ namespace Locationator
         private double currentLong = 0.0;
         private double currentLat = 0.0;
         private float currentAccuracy = 0;
-        private string tag;
-        private DAL dal;
+        private readonly string tag;
+        private IPositionRepo repo;
 
         public double CurrentLatitude { get { return currentLat; } }
         public double CurrentLongitude { get { return currentLong; } }
@@ -32,7 +35,7 @@ namespace Locationator
         {
             tag = _context.GetText(Resource.String.TAG_GPS_POINT_PROVIDER);
             locMgr = _locMgr;
-            dal = new DAL(_context);
+            repo = PositionRepo.Instance(_context);
             Log.Info(tag, "Location Manager " + locMgr);
         }
 
@@ -90,7 +93,7 @@ namespace Locationator
                 if (location.HasAccuracy)
                     currentAccuracy = location.Accuracy;
 
-                dal.SaveLocationPoint(FormatCoordinate(currentLat), FormatCoordinate(currentLong), Convert.ToInt32(currentAccuracy));
+                repo.SaveLocationPoint(new GpsPosition(currentLong, currentLat, currentAccuracy));
 
                 Log.Info(tag, "Longitude: " + currentLong + "; Latitude: " + currentLat + "; Accuracy: " + currentAccuracy);
             }
@@ -98,7 +101,7 @@ namespace Locationator
 
         public void OnProviderDisabled(string provider)
         {
-            StartGettingLocationPoints();
+            StopGettingLocationPoints();
         }
 
         public void OnProviderEnabled(string provider)
@@ -112,11 +115,6 @@ namespace Locationator
                 StartGettingLocationPoints();
             else
                 StopGettingLocationPoints();
-        }
-
-        private string FormatCoordinate(double coord)
-        {
-            return Location.Convert(coord, Format.Degrees).Replace(',', '.');
         }
     }
 }
