@@ -42,7 +42,7 @@ namespace Locationator
             gpsText = FindViewById<TextView>(Resource.Id.gpsText);
             gpsShowBtn = FindViewById<Button>(Resource.Id.gpsRequestButton);
 
-            LinkEvents();
+            LinkBtnEvents();
         }
 
         protected override void OnResume()
@@ -50,7 +50,7 @@ namespace Locationator
             base.OnResume();
             
             gpsPoints.StartGettingLocationPoints();
-            gpsText.Text += GetGpsPointText() + "\r\n";
+            gpsText.Text += GetGpsPointText();
 
             Log.Info(tag, GetGpsPointText());
         }
@@ -72,17 +72,17 @@ namespace Locationator
 
         private string GetGpsPointText()
         {
-            return "Longitude: " + gpsPoints.CurrentLongitude + "; Latitude: " + gpsPoints.CurrentLatitude + "; Accuracy: " + gpsPoints.CurrentAccuracy;
+            return "Longitude: " + gpsPoints.CurrentLongitude + "; Latitude: " + gpsPoints.CurrentLatitude + "; Accuracy: " + gpsPoints.CurrentAccuracy + "\r\n";
         }
 
-        private void LinkEvents()
+        private void LinkBtnEvents()
         {
             gpsShowBtn.Click += GpsShowBtn_Click;
         }
 
         private void GpsShowBtn_Click(object sender, EventArgs e)
         {
-            gpsText.Text += GetGpsPointText() + "\r\n";
+            gpsText.Text += GetGpsPointText();
         }
     }
 }

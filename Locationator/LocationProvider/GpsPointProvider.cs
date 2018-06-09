@@ -14,6 +14,7 @@ using Android.Locations;
 using Android.Util;
 using Locationator.Enums;
 using Locationator.DAL;
+using Locationator.Objects;
 
 namespace Locationator.LocationProvider
 {
@@ -39,44 +40,164 @@ namespace Locationator.LocationProvider
             Log.Info(tag, "Location Manager " + locMgr);
         }
 
-        public void StartGettingLocationPoints()
+        public PointProviderStatus StartGettingLocationPoints()
         {
-            string provider;
-
-            #region Request Location Way 1
-
             if (Settings.GpsLocationMode == GpsPointCollectionMode.SystemSpecified)
             {
+                return StartAutomaticSystemSelectedProvider();
+            }
+            else if (Settings.GpsLocationMode == GpsPointCollectionMode.Manual)
+            {
+                List<PointProviderStatus> statuses = new List<PointProviderStatus>();
+                PointProviderStatus finalStatus = new PointProviderStatus();
+                statuses = StartManualSystemSelectedProvider();
+
+                foreach (var status in statuses)
+                {
+                    if (status.Started)
+                    {
+                        finalStatus.Started = true;
+                    }
+
+                    if (!String.IsNullOrEmpty(status.Error))
+                    {
+                        finalStatus.Error += status.Error + "/r/n";
+                    }
+                }
+
+                return finalStatus;
+            }
+
+            PointProviderStatus incorrectSettingStatus = new PointProviderStatus();
+            incorrectSettingStatus.Error = "Incorrect GPS Location Mode setting.";
+            return incorrectSettingStatus;
+        }
+
+        private PointProviderStatus StartAutomaticSystemSelectedProvider()
+        {
+            PointProviderStatus status = new PointProviderStatus();
+            try
+            {
+                string provider;
                 Criteria locationCriteria = new Criteria();
 
-                locationCriteria.Accuracy = Accuracy.Fine;
-                locationCriteria.PowerRequirement = Power.High;
+                locationCriteria.Accuracy = Settings.GPSAutoAccuracy;
+                locationCriteria.PowerRequirement = Settings.GPSAutoPower;
 
                 provider = locMgr.GetBestProvider(locationCriteria, true);
                 Log.Info(tag, "Provider: " + provider);
                 if (provider != null)
                 {
                     locMgr.RequestLocationUpdates(provider, Constants.GPS_LOCATION_UPDATE_INTERVAL_TIME, Constants.GPS_LOCATION_UPDATE_INTERVAL_DISTANCE_METRES, this);
+
+                    status.Started = true;
+                    status.Error = String.Empty;
                 }
                 else
                 {
                     Log.Info(tag, "No location providers available");
+                    status.Started = false;
+                    status.Error = "No location providers available";
                 }
             }
-
-            #endregion
-
-            #region Request Location Way 2
-
-            if (Settings.GpsLocationMode == GpsPointCollectionMode.Manual)
+            catch (Exception ex)
             {
+                status.Started = false;
+                status.Error = ex.Message;
+                return status;
+            }
+            return status;
+        }
 
+        private List<PointProviderStatus> StartManualSystemSelectedProvider()
+        {
+            List<PointProviderStatus> statuses = new List<PointProviderStatus>();
+            try
+            {
+                if (Settings.UseGPS)
+                {
+                    PointProviderStatus gpsStatus = StartGPSProvider();
+                    statuses.Add(gpsStatus);
+                }
+
+                if (Settings.UseNetwork)
+                {
+                    PointProviderStatus networkStatus = StartNetworkProvider();
+                    statuses.Add(networkStatus);
+                }
+
+                if (Settings.UsePassive)
+                {
+                    PointProviderStatus passiveStatus = StartPassiveProvider();
+                    statuses.Add(passiveStatus);
+                }
+            }
+            catch (Exception ex)
+            {
+                PointProviderStatus manualProviderStatus = new PointProviderStatus();
+                manualProviderStatus.Started = false;
+                manualProviderStatus.Error = ex.Message;
+                statuses.Add(manualProviderStatus);
+                return statuses;
+            }
+            return statuses;
+        }
+
+        private PointProviderStatus StartGPSProvider()
+        {
+            PointProviderStatus status = new PointProviderStatus();
+            try
+            {
                 locMgr.RequestLocationUpdates(LocationManager.GpsProvider, Constants.GPS_LOCATION_UPDATE_INTERVAL_TIME, Constants.GPS_LOCATION_UPDATE_INTERVAL_DISTANCE_METRES, this);
+
+                status.Started = true;
+                status.Error = String.Empty;
+            }
+            catch (Exception ex)
+            {
+                status.Started = false;
+                status.Error = ex.Message;
+                return status;
+            }
+            return status;
+        }
+
+        private PointProviderStatus StartNetworkProvider()
+        {
+            PointProviderStatus status = new PointProviderStatus();
+            try
+            {
                 locMgr.RequestLocationUpdates(LocationManager.NetworkProvider, Constants.GPS_LOCATION_UPDATE_INTERVAL_TIME, Constants.GPS_LOCATION_UPDATE_INTERVAL_DISTANCE_METRES, this);
+
+                status.Started = true;
+                status.Error = String.Empty;
+            }
+            catch (Exception ex)
+            {
+                status.Started = false;
+                status.Error = ex.Message;
+                return status;
+            }
+            return status;
+        }
+
+        private PointProviderStatus StartPassiveProvider()
+        {
+            PointProviderStatus status = new PointProviderStatus();
+            try
+            {
                 locMgr.RequestLocationUpdates(LocationManager.PassiveProvider, Constants.GPS_LOCATION_UPDATE_INTERVAL_TIME, Constants.GPS_LOCATION_UPDATE_INTERVAL_DISTANCE_METRES, this);
 
+                status.Started = true;
+                status.Error = String.Empty;
             }
-            #endregion
+            catch (Exception ex)
+            {
+                status.Started = false;
+                status.Error = ex.Message;
+                return status;
+            }
+            return status;
         }
 
         public void StopGettingLocationPoints()

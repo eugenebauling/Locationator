@@ -17,12 +17,12 @@ namespace Locationator.DAL
     {
         public void SaveLocationPoint(GpsPosition pos)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); //intentional
         }
 
         public void SaveLocationPointAsync(GpsPosition pos)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); //intentional
         }
     }
 }

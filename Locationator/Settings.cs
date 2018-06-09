@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Locations;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -17,12 +18,18 @@ namespace Locationator
     {
         public static GpsPointCollectionMode GpsLocationMode { get; set; }
         public static DataAccessMode DataAccessMode { get; set; }
+        public static Accuracy GPSAutoAccuracy { get; set; }
+        public static Power GPSAutoPower { get; set; }
+        public static bool UseGPS { get; set; }
+        public static bool UseNetwork { get; set; }
+        public static bool UsePassive { get; set; }
 
         public static void SetDefaults()
         {
             GpsLocationMode = GpsPointCollectionMode.Manual;
+            GPSAutoAccuracy = Accuracy.Fine;
+            GPSAutoPower = Power.High;
             DataAccessMode = DataAccessMode.WebService;
         }
-
     }
 }
