@@ -15,6 +15,7 @@ using Android.Util;
 using Locationator.Enums;
 using Locationator.DAL;
 using Locationator.Objects;
+using Android.Content.Res;
 
 namespace Locationator.LocationProvider
 {
@@ -216,7 +217,9 @@ namespace Locationator.LocationProvider
 
                 repo.SaveLocationPoint(new GpsPosition(currentLong, currentLat, currentAccuracy));
 
-                Log.Info(tag, "Longitude: " + currentLong + "; Latitude: " + currentLat + "; Accuracy: " + currentAccuracy);
+                StringBuilder builder = new StringBuilder();
+                string msg = Application.Context.Resources.GetString(Resource.String.TAG_POSITION);
+                Log.Info(tag, builder.AppendFormat(msg, currentLong, currentLat, currentAccuracy).ToString());
             }
         }
 

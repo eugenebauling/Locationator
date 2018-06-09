@@ -3119,6 +3119,12 @@ namespace Locationator
 			// aapt resource value: 0x7f08002a
 			public const int DAL_SUCCESS = 2131230762;
 			
+			// aapt resource value: 0x7f080033
+			public const int ERR_INCORRECT_LOCATION_MODE = 2131230771;
+			
+			// aapt resource value: 0x7f080034
+			public const int ERR_NO_LOCATION_PROVIDERS = 2131230772;
+			
 			// aapt resource value: 0x7f080029
 			public const int LBL_LOCATION_INFO = 2131230761;
 			
@@ -3130,6 +3136,9 @@ namespace Locationator
 			
 			// aapt resource value: 0x7f08002f
 			public const int TAG_MAIN_ACTIVITY = 2131230767;
+			
+			// aapt resource value: 0x7f080032
+			public const int TAG_POSITION = 2131230770;
 			
 			// aapt resource value: 0x7f080000
 			public const int abc_action_bar_home_description = 2131230720;

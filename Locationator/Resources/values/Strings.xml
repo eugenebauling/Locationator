@@ -15,4 +15,8 @@
     <string name="TAG_MAIN_ACTIVITY">MainActivity</string>
     <string name="TAG_GPS_POINT_PROVIDER">GPSPointProvider</string>
     <string name="TAG_DAL">DAL</string>
+  <string name="TAG_POSITION">Longitude: {0}; Latitude: {1}; Accuracy: {2}</string>
+
+  <string name="ERR_INCORRECT_LOCATION_MODE">Incorrect GPS Location Mode setting.</string>
+  <string name="ERR_NO_LOCATION_PROVIDERS">No location providers available.</string>
 </resources>

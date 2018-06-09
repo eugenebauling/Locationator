@@ -8,6 +8,7 @@ using Android.OS;
 using Android.Locations;
 using Android.Util;
 using Locationator.LocationProvider;
+using System.Text;
 
 namespace Locationator
 {
@@ -72,7 +73,10 @@ namespace Locationator
 
         private string GetGpsPointText()
         {
-            return "Longitude: " + gpsPoints.CurrentLongitude + "; Latitude: " + gpsPoints.CurrentLatitude + "; Accuracy: " + gpsPoints.CurrentAccuracy + "\r\n";
+            StringBuilder builder = new StringBuilder();
+            string msg = Application.Context.Resources.GetString(Resource.String.TAG_POSITION);
+   
+            return builder.AppendFormat(msg, gpsPoints.CurrentLongitude, gpsPoints.CurrentLatitude, gpsPoints.CurrentAccuracy).ToString() + "\r\n";
         }
 
         private void LinkBtnEvents()
