@@ -19,4 +19,9 @@
 
   <string name="ERR_INCORRECT_LOCATION_MODE">Incorrect GPS Location Mode setting.</string>
   <string name="ERR_NO_LOCATION_PROVIDERS">No location providers available.</string>
+
+  <string name="import1">Import</string>
+  <string name="gallery">Gallery</string>
+  <string name="slideshow">Slideshow</string>
+  <string name="tools">Tools</string>
 </resources>

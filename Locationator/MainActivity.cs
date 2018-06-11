@@ -2,18 +2,23 @@
 using Android.App;
 using Android.Content;
 using Android.Runtime;
-using Android.Views;
+using Android.Support.Design.Widget;
 using Android.Widget;
 using Android.OS;
 using Android.Locations;
 using Android.Util;
 using Locationator.LocationProvider;
 using System.Text;
+using Android.Support.V4.Widget;
+using Android.Graphics;
+using Android.Views;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Support.V7.App;
 
 namespace Locationator
 {
     [Activity(Label = "Locationator", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    public class MainActivity : AppCompatActivity
     {
 
         private LocationManager locMgr;
@@ -33,8 +38,10 @@ namespace Locationator
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+            SetupMenuItems();
 
             Settings.SetDefaults();
+
             tag = this.BaseContext.GetText(Resource.String.TAG_MAIN_ACTIVITY);
             locMgr = GetSystemService(Context.LocationService) as LocationManager;
             gpsPoints = new GpsPointProvider(this.BaseContext, locMgr);
@@ -87,6 +94,40 @@ namespace Locationator
         private void GpsShowBtn_Click(object sender, EventArgs e)
         {
             gpsText.Text += GetGpsPointText();
+        }
+
+        private void SetupMenuItems()
+        {
+            NavigationView navigationView = new NavigationView(this);
+            DrawerLayout.LayoutParams navLayout = new DrawerLayout.LayoutParams(DrawerLayout.LayoutParams.WrapContent, DrawerLayout.LayoutParams.MatchParent);
+            navLayout.Gravity = (int)GravityFlags.Start;
+            navigationView.LayoutParameters = navLayout;
+            navigationView.SetFitsSystemWindows(true);
+            navigationView.InflateHeaderView(Resource.Layout.nav_header);
+            navigationView.InflateMenu(Resource.Menu.drawer_view);
+
+            DrawerLayout layout = (DrawerLayout)FindViewById(Resource.Id.drawer_layout);
+            layout.AddView(navigationView);
+
+            Toolbar toolbar = (Toolbar)FindViewById(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            SupportActionBar.SetHomeButtonEnabled(true);
+            SupportActionBar.SetDisplayShowTitleEnabled(true);
+            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            SupportActionBar.SetTitle(Resource.String.ApplicationName);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    DrawerLayout layout = (DrawerLayout)FindViewById(Resource.Id.drawer_layout);
+                    layout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
+                    return true;
+            }
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

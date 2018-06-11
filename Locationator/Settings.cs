@@ -26,7 +26,7 @@ namespace Locationator
 
         public static void SetDefaults()
         {
-            GpsLocationMode = GpsPointCollectionMode.Manual;
+            GpsLocationMode = GpsPointCollectionMode.SystemSpecified;
             GPSAutoAccuracy = Accuracy.Fine;
             GPSAutoPower = Power.High;
             DataAccessMode = DataAccessMode.WebService;
