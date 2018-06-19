@@ -30,6 +30,9 @@ namespace Locationator
             GPSAutoAccuracy = Accuracy.Fine;
             GPSAutoPower = Power.High;
             DataAccessMode = DataAccessMode.WebService;
+            UseGPS = true;
+            UseNetwork = true;
+            UsePassive = true;
         }
     }
 }

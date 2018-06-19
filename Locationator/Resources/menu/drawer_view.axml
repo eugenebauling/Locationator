@@ -2,16 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
   <group android:checkableBehavior="single">
     <item
-        android:id="@+id/nav_camera"
-        android:title="@string/import1" />
+        android:id="@+id/nav_settings"
+        android:title="@string/MENU_SETTINGS" />
     <item
-        android:id="@+id/nav_gallery"
-        android:title="@string/gallery" />
-    <item
-        android:id="@+id/nav_slideshow"
-        android:title="@string/slideshow" />
-    <item
-        android:id="@+id/nav_manage"
-        android:title="@string/tools" />
+        android:id="@+id/nav_exit"
+        android:title="@string/MENU_EXIT" />
   </group>
 </menu>

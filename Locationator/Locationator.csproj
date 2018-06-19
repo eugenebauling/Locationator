@@ -72,7 +72,10 @@
     <Compile Include="DAL\RepoManager.cs" />
     <Compile Include="Enums\DataAccessMode.cs" />
     <Compile Include="Enums\GpsPointCollectionMode.cs" />
+    <Compile Include="Fragments\CoordinateLogFragment.cs" />
+    <Compile Include="LocationProvider\ILocationSubscriber.cs" />
     <Compile Include="LocationProvider\GpsPointProvider.cs" />
+    <Compile Include="LocationProvider\LocationUpdates.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Models\GpsPosition.cs" />
     <Compile Include="Objects\PointProviderStatus.cs" />
@@ -196,6 +199,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\ic_menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\CoordinateLog.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

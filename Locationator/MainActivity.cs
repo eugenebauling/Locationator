@@ -14,6 +14,11 @@ using Android.Graphics;
 using Android.Views;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.V7.App;
+using Locationator.Fragments;
+using System.Threading.Tasks;
+using Android;
+using Android.Content.PM;
+using Android.Support.V4.App;
 
 namespace Locationator
 {
@@ -21,16 +26,8 @@ namespace Locationator
     public class MainActivity : AppCompatActivity
     {
 
-        private LocationManager locMgr;
         private string tag;
-        private GpsPointProvider gpsPoints;
-
-        #region Controls
-
-        TextView gpsText;
-        Button gpsShowBtn;
-
-        #endregion
+        private const int RequestLocationId = 1;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -38,62 +35,20 @@ namespace Locationator
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-            SetupMenuItems();
-
             Settings.SetDefaults();
+            GetLocationPermissionAsync();
+            
 
             tag = this.BaseContext.GetText(Resource.String.TAG_MAIN_ACTIVITY);
-            locMgr = GetSystemService(Context.LocationService) as LocationManager;
-            gpsPoints = new GpsPointProvider(this.BaseContext, locMgr);
-            gpsPoints.StartGettingLocationPoints();
 
-            gpsText = FindViewById<TextView>(Resource.Id.gpsText);
-            gpsShowBtn = FindViewById<Button>(Resource.Id.gpsRequestButton);
+            SetupMenuItems();
+            ChangeMainContent();
 
-            LinkBtnEvents();
-        }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-            
-            gpsPoints.StartGettingLocationPoints();
-            gpsText.Text += GetGpsPointText();
-
-            Log.Info(tag, GetGpsPointText());
-        }
-
-        protected override void OnPause()
-        {
-            base.OnPause();
-            gpsPoints.StartGettingLocationPoints();
         }
 
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
-            locMgr.Dispose();
-            locMgr = null;
-            gpsPoints.Dispose();
-            gpsPoints = null;
-        }
-
-        private string GetGpsPointText()
-        {
-            StringBuilder builder = new StringBuilder();
-            string msg = Application.Context.Resources.GetString(Resource.String.TAG_POSITION);
-   
-            return builder.AppendFormat(msg, gpsPoints.CurrentLongitude, gpsPoints.CurrentLatitude, gpsPoints.CurrentAccuracy).ToString() + "\r\n";
-        }
-
-        private void LinkBtnEvents()
-        {
-            gpsShowBtn.Click += GpsShowBtn_Click;
-        }
-
-        private void GpsShowBtn_Click(object sender, EventArgs e)
-        {
-            gpsText.Text += GetGpsPointText();
         }
 
         private void SetupMenuItems()
@@ -118,6 +73,15 @@ namespace Locationator
             SupportActionBar.SetTitle(Resource.String.ApplicationName);
         }
 
+        public void ChangeMainContent()
+        {
+            LinearLayout main = FindViewById<LinearLayout>(Resource.Id.main_layout);
+            var frag = new CoordinateLogFragment();
+            var trans = FragmentManager.BeginTransaction();
+            trans.Replace(Resource.Id.main_layout, frag);
+            trans.Commit();
+        }
+
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
@@ -128,6 +92,45 @@ namespace Locationator
                     return true;
             }
             return base.OnOptionsItemSelected(item);
+        }
+
+        private void GetLocationPermissionAsync()
+        {
+            //Check to see if any permission in our group is available, if one, then all are
+            const string permission = Manifest.Permission.AccessFineLocation;
+            if (CheckSelfPermission(permission) == (int)Permission.Granted)
+            {
+                LocationUpdates.Init(this.BaseContext, (LocationManager)GetSystemService(Context.LocationService), true);
+                return;
+            }
+
+            string[] PermissionsLocation =
+                {
+                  Manifest.Permission.AccessCoarseLocation,
+                  Manifest.Permission.AccessFineLocation
+                };
+            
+            //Finally request permissions with the list of permissions and Id
+            ActivityCompat.RequestPermissions(this, PermissionsLocation, RequestLocationId);
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            switch (requestCode)
+            {
+                case RequestLocationId:
+                    {
+                        if (grantResults[0] == Permission.Granted)
+                        {
+                            LocationUpdates.Init(this.BaseContext, (LocationManager)GetSystemService(Context.LocationService), true);
+                        }
+                        else
+                        {
+                            LocationUpdates.Init(this.BaseContext, (LocationManager)GetSystemService(Context.LocationService), false);
+                        }
+                    }
+                    break;
+            }
         }
     }
 }

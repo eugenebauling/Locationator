@@ -28,17 +28,21 @@ namespace Locationator.LocationProvider
         private float currentAccuracy = 0;
         private readonly string tag;
         private IPositionRepo repo;
+        private Guid publisherId;
 
         public double CurrentLatitude { get { return currentLat; } }
         public double CurrentLongitude { get { return currentLong; } }
         public float CurrentAccuracy { get { return currentAccuracy; } }
+        public Guid PublisherId { get { return publisherId; } }
 
         public GpsPointProvider(Context _context, LocationManager _locMgr)
         {
             tag = _context.GetText(Resource.String.TAG_GPS_POINT_PROVIDER);
             locMgr = _locMgr;
             repo = RepoManager.GetPositionRepo().Instance(_context);
+            publisherId = Guid.NewGuid();
             Log.Info(tag, "Location Manager " + locMgr);
+
         }
 
         public PointProviderStatus StartGettingLocationPoints()
@@ -216,6 +220,8 @@ namespace Locationator.LocationProvider
                     currentAccuracy = location.Accuracy;
 
                 repo.SaveLocationPoint(new GpsPosition(currentLong, currentLat, currentAccuracy));
+
+                LocationUpdates.Publish(new GpsPosition(currentLong, currentLat, currentAccuracy), publisherId);
 
                 StringBuilder builder = new StringBuilder();
                 string msg = Application.Context.Resources.GetString(Resource.String.TAG_POSITION);

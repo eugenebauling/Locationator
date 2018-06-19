@@ -2453,17 +2453,14 @@ namespace Locationator
 			// aapt resource value: 0x7f070039
 			public const int collapseActionView = 2131165241;
 			
-			// aapt resource value: 0x7f07008d
-			public const int container = 2131165325;
+			// aapt resource value: 0x7f07008f
+			public const int container = 2131165327;
 			
 			// aapt resource value: 0x7f070066
 			public const int contentPanel = 2131165286;
 			
-			// aapt resource value: 0x7f07009a
-			public const int content_frame = 2131165338;
-			
-			// aapt resource value: 0x7f07008e
-			public const int coordinator = 2131165326;
+			// aapt resource value: 0x7f070090
+			public const int coordinator = 2131165328;
 			
 			// aapt resource value: 0x7f07006d
 			public const int custom = 2131165293;
@@ -2477,26 +2474,26 @@ namespace Locationator
 			// aapt resource value: 0x7f070060
 			public const int default_activity_button = 2131165280;
 			
-			// aapt resource value: 0x7f070090
-			public const int design_bottom_sheet = 2131165328;
+			// aapt resource value: 0x7f070092
+			public const int design_bottom_sheet = 2131165330;
+			
+			// aapt resource value: 0x7f070099
+			public const int design_menu_item_action_area = 2131165337;
+			
+			// aapt resource value: 0x7f070098
+			public const int design_menu_item_action_area_stub = 2131165336;
 			
 			// aapt resource value: 0x7f070097
-			public const int design_menu_item_action_area = 2131165335;
+			public const int design_menu_item_text = 2131165335;
 			
 			// aapt resource value: 0x7f070096
-			public const int design_menu_item_action_area_stub = 2131165334;
-			
-			// aapt resource value: 0x7f070095
-			public const int design_menu_item_text = 2131165333;
-			
-			// aapt resource value: 0x7f070094
-			public const int design_navigation_view = 2131165332;
+			public const int design_navigation_view = 2131165334;
 			
 			// aapt resource value: 0x7f070020
 			public const int disableHome = 2131165216;
 			
-			// aapt resource value: 0x7f070099
-			public const int drawer_layout = 2131165337;
+			// aapt resource value: 0x7f07009b
+			public const int drawer_layout = 2131165339;
 			
 			// aapt resource value: 0x7f07007e
 			public const int edit_query = 2131165310;
@@ -2540,11 +2537,11 @@ namespace Locationator
 			// aapt resource value: 0x7f07000a
 			public const int ghost_view = 2131165194;
 			
-			// aapt resource value: 0x7f07009c
-			public const int gpsRequestButton = 2131165340;
+			// aapt resource value: 0x7f07008b
+			public const int gpsRequestButton = 2131165323;
 			
-			// aapt resource value: 0x7f07009d
-			public const int gpsText = 2131165341;
+			// aapt resource value: 0x7f07008c
+			public const int gpsText = 2131165324;
 			
 			// aapt resource value: 0x7f070005
 			public const int home = 2131165189;
@@ -2573,8 +2570,8 @@ namespace Locationator
 			// aapt resource value: 0x7f070000
 			public const int item_touch_helper_previous_elevation = 2131165184;
 			
-			// aapt resource value: 0x7f07008c
-			public const int largeLabel = 2131165324;
+			// aapt resource value: 0x7f07008e
+			public const int largeLabel = 2131165326;
 			
 			// aapt resource value: 0x7f070049
 			public const int left = 2131165257;
@@ -2590,6 +2587,9 @@ namespace Locationator
 			
 			// aapt resource value: 0x7f070061
 			public const int list_item = 2131165281;
+			
+			// aapt resource value: 0x7f07009c
+			public const int main_layout = 2131165340;
 			
 			// aapt resource value: 0x7f0700b3
 			public const int masked = 2131165363;
@@ -2609,20 +2609,14 @@ namespace Locationator
 			// aapt resource value: 0x7f070028
 			public const int multiply = 2131165224;
 			
-			// aapt resource value: 0x7f0700b4
-			public const int nav_camera = 2131165364;
-			
 			// aapt resource value: 0x7f0700b5
-			public const int nav_gallery = 2131165365;
+			public const int nav_exit = 2131165365;
 			
-			// aapt resource value: 0x7f0700b7
-			public const int nav_manage = 2131165367;
+			// aapt resource value: 0x7f0700b4
+			public const int nav_settings = 2131165364;
 			
-			// aapt resource value: 0x7f0700b6
-			public const int nav_slideshow = 2131165366;
-			
-			// aapt resource value: 0x7f070093
-			public const int navigation_header_container = 2131165331;
+			// aapt resource value: 0x7f070095
+			public const int navigation_header_container = 2131165333;
 			
 			// aapt resource value: 0x7f07003b
 			public const int never = 2131165243;
@@ -2744,14 +2738,14 @@ namespace Locationator
 			// aapt resource value: 0x7f070025
 			public const int showTitle = 2131165221;
 			
-			// aapt resource value: 0x7f07008b
-			public const int smallLabel = 2131165323;
+			// aapt resource value: 0x7f07008d
+			public const int smallLabel = 2131165325;
 			
-			// aapt resource value: 0x7f070092
-			public const int snackbar_action = 2131165330;
+			// aapt resource value: 0x7f070094
+			public const int snackbar_action = 2131165332;
 			
-			// aapt resource value: 0x7f070091
-			public const int snackbar_text = 2131165329;
+			// aapt resource value: 0x7f070093
+			public const int snackbar_text = 2131165331;
 			
 			// aapt resource value: 0x7f070043
 			public const int snap = 2131165251;
@@ -2801,8 +2795,8 @@ namespace Locationator
 			// aapt resource value: 0x7f070069
 			public const int textSpacerNoTitle = 2131165289;
 			
-			// aapt resource value: 0x7f070098
-			public const int text_input_password_toggle = 2131165336;
+			// aapt resource value: 0x7f07009a
+			public const int text_input_password_toggle = 2131165338;
 			
 			// aapt resource value: 0x7f070014
 			public const int textinput_counter = 2131165204;
@@ -2822,8 +2816,8 @@ namespace Locationator
 			// aapt resource value: 0x7f07006f
 			public const int title_template = 2131165295;
 			
-			// aapt resource value: 0x7f07009b
-			public const int toolbar = 2131165339;
+			// aapt resource value: 0x7f07009d
+			public const int toolbar = 2131165341;
 			
 			// aapt resource value: 0x7f07003e
 			public const int top = 2131165246;
@@ -2831,8 +2825,8 @@ namespace Locationator
 			// aapt resource value: 0x7f07006e
 			public const int topPanel = 2131165294;
 			
-			// aapt resource value: 0x7f07008f
-			public const int touch_outside = 2131165327;
+			// aapt resource value: 0x7f070091
+			public const int touch_outside = 2131165329;
 			
 			// aapt resource value: 0x7f07000f
 			public const int transition_current_scene = 2131165199;
@@ -3005,112 +2999,115 @@ namespace Locationator
 			public const int abc_select_dialog_material = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int design_bottom_navigation_item = 2130903066;
+			public const int CoordinateLog = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int design_bottom_sheet_dialog = 2130903067;
+			public const int design_bottom_navigation_item = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int design_layout_snackbar = 2130903068;
+			public const int design_bottom_sheet_dialog = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int design_layout_snackbar_include = 2130903069;
+			public const int design_layout_snackbar = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int design_layout_tab_icon = 2130903070;
+			public const int design_layout_snackbar_include = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int design_layout_tab_text = 2130903071;
+			public const int design_layout_tab_icon = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int design_menu_item_action_area = 2130903072;
+			public const int design_layout_tab_text = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int design_navigation_item = 2130903073;
+			public const int design_menu_item_action_area = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int design_navigation_item_header = 2130903074;
+			public const int design_navigation_item = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int design_navigation_item_separator = 2130903075;
+			public const int design_navigation_item_header = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int design_navigation_item_subheader = 2130903076;
+			public const int design_navigation_item_separator = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int design_navigation_menu = 2130903077;
+			public const int design_navigation_item_subheader = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int design_navigation_menu_item = 2130903078;
+			public const int design_navigation_menu = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int design_text_input_password_icon = 2130903079;
+			public const int design_navigation_menu_item = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int Main = 2130903080;
+			public const int design_text_input_password_icon = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int nav_header = 2130903081;
+			public const int Main = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int notification_action = 2130903082;
+			public const int nav_header = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int notification_action_tombstone = 2130903083;
+			public const int notification_action = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int notification_media_action = 2130903084;
+			public const int notification_action_tombstone = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int notification_media_cancel_action = 2130903085;
+			public const int notification_media_action = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int notification_template_big_media = 2130903086;
+			public const int notification_media_cancel_action = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int notification_template_big_media_custom = 2130903087;
+			public const int notification_template_big_media = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int notification_template_big_media_narrow = 2130903088;
+			public const int notification_template_big_media_custom = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int notification_template_big_media_narrow_custom = 2130903089;
+			public const int notification_template_big_media_narrow = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int notification_template_custom_big = 2130903090;
+			public const int notification_template_big_media_narrow_custom = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int notification_template_icon_group = 2130903091;
+			public const int notification_template_custom_big = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int notification_template_lines_media = 2130903092;
+			public const int notification_template_icon_group = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int notification_template_media = 2130903093;
+			public const int notification_template_lines_media = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int notification_template_media_custom = 2130903094;
+			public const int notification_template_media = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int notification_template_part_chronometer = 2130903095;
+			public const int notification_template_media_custom = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int notification_template_part_time = 2130903096;
+			public const int notification_template_part_chronometer = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int select_dialog_item_material = 2130903097;
+			public const int notification_template_part_time = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int select_dialog_multichoice_material = 2130903098;
+			public const int select_dialog_item_material = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int select_dialog_singlechoice_material = 2130903099;
+			public const int select_dialog_multichoice_material = 2130903099;
 			
 			// aapt resource value: 0x7f03003c
-			public const int support_simple_spinner_dropdown_item = 2130903100;
+			public const int select_dialog_singlechoice_material = 2130903100;
 			
 			// aapt resource value: 0x7f03003d
-			public const int tooltip = 2130903101;
+			public const int support_simple_spinner_dropdown_item = 2130903101;
+			
+			// aapt resource value: 0x7f03003e
+			public const int tooltip = 2130903102;
 			
 			static Layout()
 			{
@@ -3162,26 +3159,35 @@ namespace Locationator
 			// aapt resource value: 0x7f08002a
 			public const int DAL_SUCCESS = 2131230762;
 			
-			// aapt resource value: 0x7f080033
-			public const int ERR_INCORRECT_LOCATION_MODE = 2131230771;
-			
 			// aapt resource value: 0x7f080034
-			public const int ERR_NO_LOCATION_PROVIDERS = 2131230772;
+			public const int ERR_INCORRECT_LOCATION_MODE = 2131230772;
+			
+			// aapt resource value: 0x7f080035
+			public const int ERR_NO_LOCATION_PROVIDERS = 2131230773;
 			
 			// aapt resource value: 0x7f080029
 			public const int LBL_LOCATION_INFO = 2131230761;
 			
-			// aapt resource value: 0x7f080031
-			public const int TAG_DAL = 2131230769;
+			// aapt resource value: 0x7f080037
+			public const int MENU_EXIT = 2131230775;
+			
+			// aapt resource value: 0x7f080036
+			public const int MENU_SETTINGS = 2131230774;
 			
 			// aapt resource value: 0x7f080030
-			public const int TAG_GPS_POINT_PROVIDER = 2131230768;
+			public const int TAG_COORD_LOG = 2131230768;
+			
+			// aapt resource value: 0x7f080032
+			public const int TAG_DAL = 2131230770;
+			
+			// aapt resource value: 0x7f080031
+			public const int TAG_GPS_POINT_PROVIDER = 2131230769;
 			
 			// aapt resource value: 0x7f08002f
 			public const int TAG_MAIN_ACTIVITY = 2131230767;
 			
-			// aapt resource value: 0x7f080032
-			public const int TAG_POSITION = 2131230770;
+			// aapt resource value: 0x7f080033
+			public const int TAG_POSITION = 2131230771;
 			
 			// aapt resource value: 0x7f080000
 			public const int abc_action_bar_home_description = 2131230720;
@@ -3279,12 +3285,6 @@ namespace Locationator
 			// aapt resource value: 0x7f080020
 			public const int character_counter_pattern = 2131230752;
 			
-			// aapt resource value: 0x7f080036
-			public const int gallery = 2131230774;
-			
-			// aapt resource value: 0x7f080035
-			public const int import1 = 2131230773;
-			
 			// aapt resource value: 0x7f080021
 			public const int password_toggle_content_description = 2131230753;
 			
@@ -3303,14 +3303,8 @@ namespace Locationator
 			// aapt resource value: 0x7f080011
 			public const int search_menu_title = 2131230737;
 			
-			// aapt resource value: 0x7f080037
-			public const int slideshow = 2131230775;
-			
 			// aapt resource value: 0x7f080026
 			public const int status_bar_notification_info_overflow = 2131230758;
-			
-			// aapt resource value: 0x7f080038
-			public const int tools = 2131230776;
 			
 			static String()
 			{
