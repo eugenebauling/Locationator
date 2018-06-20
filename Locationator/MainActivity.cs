@@ -27,7 +27,7 @@ namespace Locationator
     {
 
         private string tag;
-        private const int RequestLocationId = 1;
+        private const int LocationPermissionsId = 1;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -36,8 +36,7 @@ namespace Locationator
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
             Settings.SetDefaults();
-            GetLocationPermissionAsync();
-            
+            LocationUpdates.Init(this.BaseContext, (LocationManager)GetSystemService(Context.LocationService));
 
             tag = this.BaseContext.GetText(Resource.String.TAG_MAIN_ACTIVITY);
 
@@ -92,45 +91,6 @@ namespace Locationator
                     return true;
             }
             return base.OnOptionsItemSelected(item);
-        }
-
-        private void GetLocationPermissionAsync()
-        {
-            //Check to see if any permission in our group is available, if one, then all are
-            const string permission = Manifest.Permission.AccessFineLocation;
-            if (CheckSelfPermission(permission) == (int)Permission.Granted)
-            {
-                LocationUpdates.Init(this.BaseContext, (LocationManager)GetSystemService(Context.LocationService), true);
-                return;
-            }
-
-            string[] PermissionsLocation =
-                {
-                  Manifest.Permission.AccessCoarseLocation,
-                  Manifest.Permission.AccessFineLocation
-                };
-            
-            //Finally request permissions with the list of permissions and Id
-            ActivityCompat.RequestPermissions(this, PermissionsLocation, RequestLocationId);
-        }
-
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
-        {
-            switch (requestCode)
-            {
-                case RequestLocationId:
-                    {
-                        if (grantResults[0] == Permission.Granted)
-                        {
-                            LocationUpdates.Init(this.BaseContext, (LocationManager)GetSystemService(Context.LocationService), true);
-                        }
-                        else
-                        {
-                            LocationUpdates.Init(this.BaseContext, (LocationManager)GetSystemService(Context.LocationService), false);
-                        }
-                    }
-                    break;
-            }
         }
     }
 }

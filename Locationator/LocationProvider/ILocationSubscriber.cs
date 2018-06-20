@@ -10,11 +10,13 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Locationator.Models;
+using Locationator.Objects;
 
 namespace Locationator.LocationProvider
 {
     public interface ILocationSubscriber
     {
         void OnPositionChanged(GpsPosition position);
+        void OnPositionError(PointProviderStatus position);
     }
 }

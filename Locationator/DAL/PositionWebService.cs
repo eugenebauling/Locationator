@@ -16,10 +16,12 @@ using Android.Util;
 using System.IO;
 using Android.Content.Res;
 using Newtonsoft.Json;
+using Locationator.LocationProvider;
+using Locationator.Objects;
 
 namespace Locationator.DAL
 {
-    public class PositionWebService: IPositionRepo
+    public class PositionWebService: IPositionRepo, ILocationSubscriber
     {
         private string tag;
         private Context _context;
@@ -86,6 +88,16 @@ namespace Locationator.DAL
                     }
                 }
             }
+        }
+
+        public void OnPositionChanged(GpsPosition position)
+        {
+            SaveLocationPoint(position);
+        }
+
+        public void OnPositionError(PointProviderStatus position)
+        {
+            //do nothing for now
         }
     }
 }

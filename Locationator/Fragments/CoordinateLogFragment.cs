@@ -10,8 +10,10 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Locationator.DAL;
 using Locationator.LocationProvider;
 using Locationator.Models;
+using Locationator.Objects;
 
 namespace Locationator.Fragments
 {
@@ -20,7 +22,6 @@ namespace Locationator.Fragments
         #region Controls
 
         TextView gpsText;
-        Button gpsShowBtn;
         private string tag;
 
         #endregion
@@ -36,22 +37,13 @@ namespace Locationator.Fragments
             View v = inflater.Inflate(Resource.Layout.CoordinateLog, null, false);
 
             gpsText = v.FindViewById<TextView>(Resource.Id.gpsText);
-            gpsShowBtn = v.FindViewById<Button>(Resource.Id.gpsRequestButton);
             tag = this.Context.GetText(Resource.String.TAG_COORD_LOG);
-            LinkBtnEvents();
+            ILocationSubscriber repo = (PositionWebService)RepoManager.GetPositionRepo().Instance(this.Context);
+
             LocationUpdates.Subscribe(this);
+            LocationUpdates.Subscribe(repo);
 
             return v;
-        }
-
-        private void LinkBtnEvents()
-        {
-            gpsShowBtn.Click += GpsShowBtn_Click;
-        }
-
-        private void GpsShowBtn_Click(object sender, EventArgs e)
-        {
-            //gpsText.Text += GetGpsPointText();
         }
 
         protected override void Dispose(bool disposing)
@@ -59,19 +51,9 @@ namespace Locationator.Fragments
             base.Dispose(disposing);
         }
 
-        //private string GetGpsPointText()
-        //{
-        //    StringBuilder builder = new StringBuilder();
-        //    string msg = Application.Context.Resources.GetString(Resource.String.TAG_POSITION);
-
-        //    return builder.AppendFormat(msg, gpsPoints.CurrentLongitude, gpsPoints.CurrentLatitude, gpsPoints.CurrentAccuracy).ToString() + "\r\n";
-        //}
-
         public override void OnResume()
         {
             base.OnResume();
-
-            //Log.Info(tag, GetGpsPointText());
         }
 
         public override void OnPause()
@@ -84,6 +66,11 @@ namespace Locationator.Fragments
             StringBuilder builder = new StringBuilder();
             string msg = Application.Context.Resources.GetString(Resource.String.TAG_POSITION);
             gpsText.Text += builder.AppendFormat(msg, position.Long, position.Lat, position.Accuracy).ToString() + "\r\n";
+        }
+
+        public void OnPositionError(PointProviderStatus position)
+        {
+            //do nothing for now
         }
     }
 }

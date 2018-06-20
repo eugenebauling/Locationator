@@ -16,18 +16,19 @@ using Locationator.Enums;
 using Locationator.DAL;
 using Locationator.Objects;
 using Android.Content.Res;
+using Locationator.Permissions;
 
 namespace Locationator.LocationProvider
 {
 
-    public class GpsPointProvider: Java.Lang.Object, ILocationListener
+    public class GpsPointProvider: Java.Lang.Object, ILocationListener, IPermissionsCheck
     {
         private LocationManager locMgr;
+        private Context context;
         private double currentLong = 0.0;
         private double currentLat = 0.0;
         private float currentAccuracy = 0;
         private readonly string tag;
-        private IPositionRepo repo;
         private Guid publisherId;
 
         public double CurrentLatitude { get { return currentLat; } }
@@ -39,13 +40,18 @@ namespace Locationator.LocationProvider
         {
             tag = _context.GetText(Resource.String.TAG_GPS_POINT_PROVIDER);
             locMgr = _locMgr;
-            repo = RepoManager.GetPositionRepo().Instance(_context);
+            context = _context;
             publisherId = Guid.NewGuid();
             Log.Info(tag, "Location Manager " + locMgr);
 
         }
 
-        public PointProviderStatus StartGettingLocationPoints()
+        public void StartGettingLocationPoints()
+        {
+            CheckPermissions();
+        }
+
+        private PointProviderStatus StartWithPermissions()
         {
             if (Settings.GpsLocationMode == GpsPointCollectionMode.SystemSpecified)
             {
@@ -219,8 +225,6 @@ namespace Locationator.LocationProvider
                 if (location.HasAccuracy)
                     currentAccuracy = location.Accuracy;
 
-                repo.SaveLocationPoint(new GpsPosition(currentLong, currentLat, currentAccuracy));
-
                 LocationUpdates.Publish(new GpsPosition(currentLong, currentLat, currentAccuracy), publisherId);
 
                 StringBuilder builder = new StringBuilder();
@@ -245,6 +249,24 @@ namespace Locationator.LocationProvider
                 StartGettingLocationPoints();
             else
                 StopGettingLocationPoints();
+        }
+
+        public void CheckPermissions()
+        {
+            PermissionsActivity permission = new PermissionsActivity(this, context);
+            permission.GetLocationPermissions();
+        }
+
+        public void PermissionCheckResult(bool permissionGranted)
+        {
+            if (permissionGranted)
+            {
+                PointProviderStatus result = StartWithPermissions();
+                if (!result.Started)
+                {
+                    LocationUpdates.PublishError(result, publisherId);
+                }
+            }
         }
     }
 }

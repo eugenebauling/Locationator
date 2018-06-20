@@ -2,10 +2,6 @@
 <resources>
   <string name="ApplicationName">Locationator</string>
 
-  <string name="BTN_SHOW_LOCATION_POINT">Show location point</string>
-
-  <string name="LBL_LOCATION_INFO">Location Info</string>
-
   <string name="DAL_SUCCESS">DAL Success</string>
   <string name="DAL_ERROR">DAL Error</string>
   <string name="DAL_EMPTY_BODY">"Response Contained empty body:</string>

@@ -4,12 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
-    <Button
-        android:text="@string/BTN_SHOW_LOCATION_POINT"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/gpsRequestButton" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,7 +12,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:text="@string/LBL_LOCATION_INFO"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

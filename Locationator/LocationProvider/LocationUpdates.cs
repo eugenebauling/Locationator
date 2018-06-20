@@ -10,7 +10,9 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Locationator.DAL;
 using Locationator.Models;
+using Locationator.Objects;
 
 namespace Locationator.LocationProvider
 {
@@ -23,28 +25,19 @@ namespace Locationator.LocationProvider
         private static List<ILocationSubscriber> subscribers = new List<ILocationSubscriber>();
         private static bool started = false;
         private static Guid publisherId;
-        private static bool permission;
 
-        public static void Init(Context _context, LocationManager _locMgr, bool permissionGranted)
+        public static void Init(Context _context, LocationManager _locMgr)
         {
             context = _context;
             locMgr = _locMgr;
             gpsPoints = new GpsPointProvider(_context, _locMgr);
             publisherId = gpsPoints.PublisherId;
-            permission = permissionGranted;
-            if (permission && subscribers.Count > 0)
-            {
-                StartUpdates();
-            }
         }
 
         private static void StartUpdates()
         {
-            if (permission)
-            {
                 gpsPoints.StartGettingLocationPoints();
                 started = true;
-            }
         }
 
         private static void StopUpdates()
@@ -60,6 +53,17 @@ namespace Locationator.LocationProvider
                 foreach (ILocationSubscriber sub in subscribers)
                 {
                     sub.OnPositionChanged(position);
+                }
+            }
+        }
+
+        public static void PublishError(PointProviderStatus status, Guid requestedPublisherId)
+        {
+            if (requestedPublisherId == publisherId)
+            {
+                foreach (ILocationSubscriber sub in subscribers)
+                {
+                    sub.OnPositionError(status);
                 }
             }
         }
