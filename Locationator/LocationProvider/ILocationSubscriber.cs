@@ -16,6 +16,7 @@ namespace Locationator.LocationProvider
 {
     public interface ILocationSubscriber
     {
+        int GetSubscriberId();
         void OnPositionChanged(GpsPosition position);
         void OnPositionError(PointProviderStatus position);
     }

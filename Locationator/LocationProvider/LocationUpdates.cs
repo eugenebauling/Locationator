@@ -70,14 +70,16 @@ namespace Locationator.LocationProvider
 
         public static void Subscribe(ILocationSubscriber subscriber)
         {
-            subscribers.Add(subscriber);
-
-            if (!started)
+            if (subscribers.Where(x => x.GetSubscriberId() == subscriber.GetSubscriberId()).Any() == false)
             {
-                StartUpdates();
+                subscribers.Add(subscriber);
+
+                if (!started)
+                {
+                    StartUpdates();
+                }
             }
         }
-
         public static void Unsubscribe(ILocationSubscriber subscriber)
         {
             int i = subscribers.IndexOf(subscriber);

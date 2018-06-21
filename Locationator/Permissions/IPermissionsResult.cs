@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace Locationator.Permissions
 {
-    public interface IPermissionsCheck
+    public interface IPermissionsResult
     {
         void PermissionCheckResult(bool permissionGranted);
     }

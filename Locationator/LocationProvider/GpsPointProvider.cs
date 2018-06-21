@@ -21,7 +21,7 @@ using Locationator.Permissions;
 namespace Locationator.LocationProvider
 {
 
-    public class GpsPointProvider: Java.Lang.Object, ILocationListener, IPermissionsCheck
+    public class GpsPointProvider : Java.Lang.Object, ILocationListener, IPermissionsResult
     {
         private LocationManager locMgr;
         private Context context;
@@ -48,10 +48,10 @@ namespace Locationator.LocationProvider
 
         public void StartGettingLocationPoints()
         {
-            CheckPermissions();
+            CheckIfDeviceHasLocationTurnedOn();
         }
 
-        private PointProviderStatus StartWithPermissions()
+        private PointProviderStatus StartWithPermissionsGranted()
         {
             if (Settings.GpsLocationMode == GpsPointCollectionMode.SystemSpecified)
             {
@@ -106,9 +106,9 @@ namespace Locationator.LocationProvider
                 }
                 else
                 {
-                    Log.Info(tag, "No location providers available");
+                    Log.Info(tag, Application.Context.Resources.GetString(Resource.String.ERR_GENERAL));
                     status.Started = false;
-                    status.Error = "No location providers available";
+                    status.Error = Application.Context.Resources.GetString(Resource.String.ERR_GENERAL);
                 }
             }
             catch (Exception ex)
@@ -245,7 +245,7 @@ namespace Locationator.LocationProvider
 
         public void OnStatusChanged(string provider, [GeneratedEnum] Availability status, Bundle extras)
         {
-            if (status == Availability.Available)
+            if (status == Availability.Available || status == Availability.TemporarilyUnavailable)
                 StartGettingLocationPoints();
             else
                 StopGettingLocationPoints();
@@ -253,20 +253,43 @@ namespace Locationator.LocationProvider
 
         public void CheckPermissions()
         {
-            PermissionsActivity permission = new PermissionsActivity(this, context);
-            permission.GetLocationPermissions();
+            PermissionsCommunicator.GetLocationPermissions(this, context);
         }
 
         public void PermissionCheckResult(bool permissionGranted)
         {
             if (permissionGranted)
             {
-                PointProviderStatus result = StartWithPermissions();
+                PointProviderStatus result = StartWithPermissionsGranted();
                 if (!result.Started)
                 {
                     LocationUpdates.PublishError(result, publisherId);
                 }
             }
+        }
+
+        private void CheckIfDeviceHasLocationTurnedOn()
+        {
+            if (!locMgr.IsProviderEnabled(LocationManager.GpsProvider) && !locMgr.IsProviderEnabled(LocationManager.NetworkProvider))
+            {
+                // Build the alert dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.SetTitle(Application.Context.Resources.GetString(Resource.String.TEXT_NO_LOCATION_SERVICE));
+                builder.SetMessage(Application.Context.Resources.GetString(Resource.String.TEXT_ENABLE_LOCATION_SERVICE));
+                builder.SetPositiveButton(Application.Context.Resources.GetString(Resource.String.BTN_OK), Ack);
+                Dialog alertDialog = builder.Create();
+                alertDialog.SetCanceledOnTouchOutside(false);
+                alertDialog.Show();
+            }
+            else
+            {
+                CheckPermissions();
+            }
+        }
+        void Ack(object sender, DialogClickEventArgs e)
+        {
+            Intent intent = new Intent(Android.Provider.Settings.ActionLocationSourceSettings);
+            context.StartActivity(intent);
         }
     }
 }

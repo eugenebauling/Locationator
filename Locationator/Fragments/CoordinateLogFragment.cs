@@ -23,26 +23,26 @@ namespace Locationator.Fragments
 
         TextView gpsText;
         private string tag;
+        const int subscriberId = 1;
 
         #endregion
 
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            ILocationSubscriber repo = (PositionWebService)RepoManager.GetPositionRepo().Instance(this.Context);
+
+            LocationUpdates.Subscribe(this);
+            LocationUpdates.Subscribe(repo);
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             
             View v = inflater.Inflate(Resource.Layout.CoordinateLog, null, false);
-
             gpsText = v.FindViewById<TextView>(Resource.Id.gpsText);
             tag = this.Context.GetText(Resource.String.TAG_COORD_LOG);
-            ILocationSubscriber repo = (PositionWebService)RepoManager.GetPositionRepo().Instance(this.Context);
-
-            LocationUpdates.Subscribe(this);
-            LocationUpdates.Subscribe(repo);
-
             return v;
         }
 
@@ -70,7 +70,13 @@ namespace Locationator.Fragments
 
         public void OnPositionError(PointProviderStatus position)
         {
-            //do nothing for now
+            string msg = Application.Context.Resources.GetString(Resource.String.ERR_GENERAL) + " : " + position.Error;
+            gpsText.Text += msg + "\r\n";
+        }
+
+        public int GetSubscriberId()
+        {
+            return subscriberId;
         }
     }
 }

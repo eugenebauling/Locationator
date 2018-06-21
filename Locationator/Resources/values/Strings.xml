@@ -16,7 +16,13 @@
 
   <string name="ERR_INCORRECT_LOCATION_MODE">Incorrect GPS Location Mode setting.</string>
   <string name="ERR_NO_LOCATION_PROVIDERS">No location providers available.</string>
+  <string name="ERR_GENERAL">Error</string>
+
+  <string name="TEXT_NO_LOCATION_SERVICE">Location Services Not Active.</string>
+  <string name="TEXT_ENABLE_LOCATION_SERVICE">Please enable Location Services and GPS.</string>
 
   <string name="MENU_SETTINGS">GPS Settings</string>
   <string name="MENU_EXIT">Exit</string>
+
+  <string name="BTN_OK">Ok</string>
 </resources>

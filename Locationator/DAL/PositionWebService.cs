@@ -25,6 +25,7 @@ namespace Locationator.DAL
     {
         private string tag;
         private Context _context;
+        const int subscriberId = 2;
 
         public PositionWebService(Context context)
         {
@@ -98,6 +99,11 @@ namespace Locationator.DAL
         public void OnPositionError(PointProviderStatus position)
         {
             //do nothing for now
+        }
+
+        public int GetSubscriberId()
+        {
+            return subscriberId;
         }
     }
 }
