@@ -77,8 +77,8 @@ namespace Locationator
             navigationView.LayoutParameters = navLayout;
             navigationView.SetFitsSystemWindows(true);
             navigationView.ItemIconTintList = null;
-            navigationView.InflateHeaderView(Resource.Layout.nav_header);
-            navigationView.InflateMenu(Resource.Menu.drawer_view);
+            navigationView.InflateHeaderView(Resource.Layout.NavHeader);
+            navigationView.InflateMenu(Resource.Menu.DrawerMenu);
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
 
             DrawerLayout layout = (DrawerLayout)FindViewById(Resource.Id.drawer_layout);
@@ -89,7 +89,7 @@ namespace Locationator
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayShowTitleEnabled(true);
-            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.menu);
             SupportActionBar.SetTitle(Resource.String.ApplicationName);
         }
 

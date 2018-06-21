@@ -23,6 +23,7 @@
 
   <string name="MENU_SETTINGS">GPS Settings</string>
   <string name="MENU_EXIT">Exit</string>
+  <string name="MENU_SECTION">General</string>
 
   <string name="BTN_OK">Ok</string>
 </resources>
