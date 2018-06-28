@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="gps_titles">
+    <item>@string/SETTINGS_GPS_SETTING_MAN</item>
+    <item>@string/SETTINGS_GPS_SETTING_SYS</item>
+  </string-array>
+  <string-array name="gps_values">
+    <item>0</item>
+    <item>1</item>
+  </string-array>
+</resources>

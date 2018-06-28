@@ -22,6 +22,6 @@ namespace Locationator
 
         public const string URL_SAVE_LOCATION_POINT = "http://fleetcrmdal.bbasoftware.co.za/api/Position/AddToQueue/";
 
+        public const string SETTINGS_KEY_GPS_TYPE = "GpsSetting";
     }
-
 }

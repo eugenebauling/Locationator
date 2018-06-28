@@ -45,13 +45,14 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
-    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <EnableProguard>false</EnableProguard>
     <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
     <BundleAssemblies>false</BundleAssemblies>
+    <AndroidSupportedAbis>armeabi-v7a;x86;x86_64</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -75,7 +76,8 @@
     <Compile Include="DAL\RepoManager.cs" />
     <Compile Include="Enums\DataAccessMode.cs" />
     <Compile Include="Enums\GpsPointCollectionMode.cs" />
-    <Compile Include="Fragments\CoordinateLogFragment.cs" />
+    <Compile Include="Screens\Activities\SettingsActivity.cs" />
+    <Compile Include="Screens\Fragments\CoordinateLogFragment.cs" />
     <Compile Include="LocationProvider\ILocationSubscriber.cs" />
     <Compile Include="LocationProvider\GpsPointProvider.cs" />
     <Compile Include="LocationProvider\LocationUpdates.cs" />
@@ -180,7 +182,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\menu\DrawerMenu.axml">
+    <AndroidResource Include="Resources\menu\NavMenu.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -203,6 +205,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Keystore\BBA.keystore-info.txt" />
+    <AndroidResource Include="Resources\drawable\nav_gradient.xml" />
+    <AndroidResource Include="Resources\layout\Preferences.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\values\Arrays.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\xml\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

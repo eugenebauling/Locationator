@@ -14,11 +14,12 @@ using Android.Graphics;
 using Android.Views;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.V7.App;
-using Locationator.Fragments;
+using Locationator.Screens.Fragments;
 using System.Threading.Tasks;
 using Android;
 using Android.Content.PM;
 using Android.Support.V4.App;
+using Locationator.Screens.Activities;
 
 namespace Locationator
 {
@@ -78,7 +79,7 @@ namespace Locationator
             navigationView.SetFitsSystemWindows(true);
             navigationView.ItemIconTintList = null;
             navigationView.InflateHeaderView(Resource.Layout.NavHeader);
-            navigationView.InflateMenu(Resource.Menu.DrawerMenu);
+            navigationView.InflateMenu(Resource.Menu.NavMenu);
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
 
             DrawerLayout layout = (DrawerLayout)FindViewById(Resource.Id.drawer_layout);
@@ -99,11 +100,24 @@ namespace Locationator
             e.MenuItem.SetChecked(true);
             // close drawer when item is tapped
             drawer.CloseDrawers();
-            
+            switch (e.MenuItem.ItemId)
+            {
+                case Resource.Id.nav_exit:
+                    System.Environment.Exit(0);
+                    break;
+                case Resource.Id.nav_settings:
+                    var intent = new Intent(this, typeof(SettingsActivity));
+                    StartActivity(intent);
+                    break;
+                default:
+                    break;
+            }
+
             if (e.MenuItem.ItemId == Resource.Id.nav_exit)
             {
                 System.Environment.Exit(0);
             }
+ 
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

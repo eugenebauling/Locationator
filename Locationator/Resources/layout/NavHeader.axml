@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="140dp"
     android:padding="16dp"
-    android:theme="@style/ThemeOverlay.AppCompat.Light"
+    android:background="@drawable/nav_gradient"
     android:orientation="vertical"
     android:gravity="bottom">
     <ImageView
@@ -14,5 +14,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ApplicationName" />
+        android:text="@string/ApplicationName"
+        android:textColor="?attr/colorPrimary" />
 </LinearLayout>

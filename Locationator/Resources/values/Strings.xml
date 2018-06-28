@@ -26,4 +26,11 @@
   <string name="MENU_SECTION">General</string>
 
   <string name="BTN_OK">Ok</string>
+
+  <string name="SETTINGS_GPS_TITLE">Positions</string>
+  <string name="SETTINGS_GPS_SELECT">Select a position provider</string>
+  <string name="SETTINGS_GPS_SETTING_SYS">System</string>
+  <string name="SETTINGS_GPS_SETTING_MAN">Manual</string>
+  <string name="SETTINGS_GPS_SETTING_DESC_SYSTEM">Lets the Android OS decide which mechanism to use to collect positions</string>
+  <string name="SETTINGS_GPS_SETTING_DESC_MANUAL">User can specify which combination of mechanisms the app must use</string>
 </resources>

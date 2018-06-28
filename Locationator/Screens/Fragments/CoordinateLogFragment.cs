@@ -15,7 +15,7 @@ using Locationator.LocationProvider;
 using Locationator.Models;
 using Locationator.Objects;
 
-namespace Locationator.Fragments
+namespace Locationator.Screens.Fragments
 {
     public class CoordinateLogFragment : Fragment, ILocationSubscriber
     {
@@ -31,7 +31,7 @@ namespace Locationator.Fragments
         {
             base.OnCreate(savedInstanceState);
 
-            ILocationSubscriber repo = (PositionWebService)RepoManager.GetPositionRepo().Instance(this.Context);
+            ILocationSubscriber repo = (PositionWebService)RepoManager.GetPositionRepo().Instance(this.Activity);
 
             LocationUpdates.Subscribe(this);
             LocationUpdates.Subscribe(repo);
@@ -42,7 +42,7 @@ namespace Locationator.Fragments
             
             View v = inflater.Inflate(Resource.Layout.CoordinateLog, null, false);
             gpsText = v.FindViewById<TextView>(Resource.Id.gpsText);
-            tag = this.Context.GetText(Resource.String.TAG_COORD_LOG);
+            tag = this.Activity.GetText(Resource.String.TAG_COORD_LOG);
             return v;
         }
 

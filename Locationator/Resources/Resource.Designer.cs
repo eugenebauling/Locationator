@@ -105,6 +105,25 @@ namespace Locationator
 			}
 		}
 		
+		public partial class Array
+		{
+			
+			// aapt resource value: 0x7f0d0000
+			public const int gps_titles = 2131558400;
+			
+			// aapt resource value: 0x7f0d0001
+			public const int gps_values = 2131558401;
+			
+			static Array()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Array()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
@@ -2215,26 +2234,26 @@ namespace Locationator
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f02006f
-			public const int avd_hide_password_1 = 2130837615;
-			
 			// aapt resource value: 0x7f020070
-			public const int avd_hide_password_2 = 2130837616;
+			public const int avd_hide_password_1 = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int avd_hide_password_3 = 2130837617;
+			public const int avd_hide_password_2 = 2130837617;
+			
+			// aapt resource value: 0x7f020072
+			public const int avd_hide_password_3 = 2130837618;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f020072
-			public const int avd_show_password_1 = 2130837618;
-			
 			// aapt resource value: 0x7f020073
-			public const int avd_show_password_2 = 2130837619;
+			public const int avd_show_password_1 = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int avd_show_password_3 = 2130837620;
+			public const int avd_show_password_2 = 2130837620;
+			
+			// aapt resource value: 0x7f020075
+			public const int avd_show_password_3 = 2130837621;
 			
 			// aapt resource value: 0x7f020055
 			public const int design_bottom_navigation_item_background = 2130837589;
@@ -2270,49 +2289,52 @@ namespace Locationator
 			public const int menu = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int navigation_empty_icon = 2130837600;
+			public const int nav_gradient = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int notification_action_background = 2130837601;
+			public const int navigation_empty_icon = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int notification_bg = 2130837602;
+			public const int notification_action_background = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int notification_bg_low = 2130837603;
+			public const int notification_bg = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int notification_bg_low_normal = 2130837604;
+			public const int notification_bg_low = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int notification_bg_low_pressed = 2130837605;
+			public const int notification_bg_low_normal = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int notification_bg_normal = 2130837606;
+			public const int notification_bg_low_pressed = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int notification_bg_normal_pressed = 2130837607;
+			public const int notification_bg_normal = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int notification_icon_background = 2130837608;
-			
-			// aapt resource value: 0x7f02006d
-			public const int notification_template_icon_bg = 2130837613;
-			
-			// aapt resource value: 0x7f02006e
-			public const int notification_template_icon_low_bg = 2130837614;
+			public const int notification_bg_normal_pressed = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int notification_tile_bg = 2130837609;
+			public const int notification_icon_background = 2130837609;
+			
+			// aapt resource value: 0x7f02006e
+			public const int notification_template_icon_bg = 2130837614;
+			
+			// aapt resource value: 0x7f02006f
+			public const int notification_template_icon_low_bg = 2130837615;
 			
 			// aapt resource value: 0x7f02006a
-			public const int notify_panel_notification_icon_bg = 2130837610;
+			public const int notification_tile_bg = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int tooltip_frame_dark = 2130837611;
+			public const int notify_panel_notification_icon_bg = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int tooltip_frame_light = 2130837612;
+			public const int tooltip_frame_dark = 2130837612;
+			
+			// aapt resource value: 0x7f02006d
+			public const int tooltip_frame_light = 2130837613;
 			
 			static Drawable()
 			{
@@ -3104,19 +3126,22 @@ namespace Locationator
 			public const int notification_template_part_time = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int select_dialog_item_material = 2130903098;
+			public const int Preferences = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int select_dialog_multichoice_material = 2130903099;
+			public const int select_dialog_item_material = 2130903099;
 			
 			// aapt resource value: 0x7f03003c
-			public const int select_dialog_singlechoice_material = 2130903100;
+			public const int select_dialog_multichoice_material = 2130903100;
 			
 			// aapt resource value: 0x7f03003d
-			public const int support_simple_spinner_dropdown_item = 2130903101;
+			public const int select_dialog_singlechoice_material = 2130903101;
 			
 			// aapt resource value: 0x7f03003e
-			public const int tooltip = 2130903102;
+			public const int support_simple_spinner_dropdown_item = 2130903102;
+			
+			// aapt resource value: 0x7f03003f
+			public const int tooltip = 2130903103;
 			
 			static Layout()
 			{
@@ -3131,8 +3156,8 @@ namespace Locationator
 		public partial class Menu
 		{
 			
-			// aapt resource value: 0x7f0d0000
-			public const int DrawerMenu = 2131558400;
+			// aapt resource value: 0x7f0e0000
+			public const int NavMenu = 2131623936;
 			
 			static Menu()
 			{
@@ -3185,6 +3210,24 @@ namespace Locationator
 			
 			// aapt resource value: 0x7f080037
 			public const int MENU_SETTINGS = 2131230775;
+			
+			// aapt resource value: 0x7f08003c
+			public const int SETTINGS_GPS_SELECT = 2131230780;
+			
+			// aapt resource value: 0x7f080040
+			public const int SETTINGS_GPS_SETTING_DESC_MANUAL = 2131230784;
+			
+			// aapt resource value: 0x7f08003f
+			public const int SETTINGS_GPS_SETTING_DESC_SYSTEM = 2131230783;
+			
+			// aapt resource value: 0x7f08003e
+			public const int SETTINGS_GPS_SETTING_MAN = 2131230782;
+			
+			// aapt resource value: 0x7f08003d
+			public const int SETTINGS_GPS_SETTING_SYS = 2131230781;
+			
+			// aapt resource value: 0x7f08003b
+			public const int SETTINGS_GPS_TITLE = 2131230779;
 			
 			// aapt resource value: 0x7f08002e
 			public const int TAG_COORD_LOG = 2131230766;

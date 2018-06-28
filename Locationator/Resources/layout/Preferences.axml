@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/SETTINGS_GPS_TITLE">
+        <ListPreference
+            android:entries="@array/gps_titles"
+            android:entryValues="@array/gps_values"
+            android:defaultValue="0"
+            android:key="GpsSetting" />
+    </PreferenceCategory>
+</PreferenceScreen>
