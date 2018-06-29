@@ -36,7 +36,7 @@
   <string name="SETTINGS_GPS_SETTING_SYS">System</string>
   <string name="SETTINGS_GPS_SETTING_MAN">Manual</string>
   <string name="SETTINGS_GPS_SETTING_DESC_SYSTEM">Lets the Android OS decide which mechanism to use to collect positions</string>
-  <string name="SETTINGS_GPS_SETTING_DESC_MANUAL">User can specify which combination of mechanisms the app must use</string>
+  <string name="SETTINGS_GPS_SETTING_DESC_MANUAL">User can specify which combination of mechanisms the app must use in Advanced settings</string>
   <string name="SETTINGS_GPS_ADVANCED">Advanced GPS Settings</string>
   <string name="SETTINGS_GPS_ADVANCED_SYS">Change settings like accuracy of locations and battery usage options</string>
   <string name="SETTINGS_GPS_ADVANCED_MAN">Change settings like the combination of location providers to use</string>

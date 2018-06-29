@@ -92,5 +92,11 @@ namespace Locationator.LocationProvider
                 StopUpdates();
             }
         }
+
+        public static void Restart()
+        {
+            StopUpdates();
+            StartUpdates();
+        }
     }
 }

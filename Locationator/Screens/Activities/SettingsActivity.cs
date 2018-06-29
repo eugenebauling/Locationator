@@ -12,6 +12,7 @@ using Android.Widget;
 using Android.Preferences;
 using Locationator.Screens.Fragments;
 using Locationator.Enums;
+using Locationator.LocationProvider;
 
 namespace Locationator.Screens.Activities
 {
@@ -34,6 +35,9 @@ namespace Locationator.Screens.Activities
 			case Constants.SETTINGS_KEY_GPS_TYPE:
                     SetGpsSetting();
                 break;
+                default:
+                    LocationUpdates.Restart();
+                    break;
             }
         }
 
@@ -90,6 +94,7 @@ namespace Locationator.Screens.Activities
             {
                 advancedGpsPref.SetSummary(advSummary);
             }
+
         }
     }
 }

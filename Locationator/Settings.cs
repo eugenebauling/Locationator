@@ -20,7 +20,7 @@ namespace Locationator
         public static GpsPointCollectionMode GpsLocationMode {
             get
             {
-                //Lovely hack because GetDefaultSharedPreferences.GetString is the only one that works. Everything else throws Java cast exceptions
+                //Lovely hack because GetString works while GetInt throws Java cast exceptions
                 string setting = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(Constants.SETTINGS_KEY_GPS_TYPE, "1");
                 switch (Convert.ToInt32(setting))
                 {
@@ -84,21 +84,24 @@ namespace Locationator
         {
             get
             {
-                return Convert.ToBoolean(PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(Constants.SETTINGS_KEY_GPS_GPS, "false"));
+                var setting = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetBoolean(Constants.SETTINGS_KEY_GPS_GPS, false);
+                return setting;
             }
         }
         public static bool UseNetwork
         {
             get
             {
-                return Convert.ToBoolean(PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(Constants.SETTINGS_KEY_GPS_GSM, "false"));
+                var setting = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetBoolean(Constants.SETTINGS_KEY_GPS_GSM, false);
+                return setting;
             }
         }
         public static bool UsePassive
         {
             get
             {
-                return Convert.ToBoolean(PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(Constants.SETTINGS_KEY_GPS_PAS, "false"));
+                var setting = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetBoolean(Constants.SETTINGS_KEY_GPS_PAS, false);
+                return setting;
             }
         }
         public static int GpsLocationUpdateIntervalMilliseconds
