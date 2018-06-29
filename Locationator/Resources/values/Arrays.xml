@@ -8,4 +8,16 @@
     <item>0</item>
     <item>1</item>
   </string-array>
+  <string-array name="gps_magnitudes">
+    <item>@string/SETTINGS_NO_REQ</item>
+    <item>@string/SETTINGS_LOW</item>
+    <item>@string/SETTINGS_MED</item>
+    <item>@string/SETTINGS_HIGH</item>
+  </string-array>
+  <string-array name="gps_magnitudes_values">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+  </string-array>
 </resources>

@@ -26,9 +26,15 @@
   <string name="MENU_SECTION">General</string>
 
   <string name="BTN_OK">Ok</string>
-
+  
+  <string name="SETTINGS_LOW">Low</string>
+  <string name="SETTINGS_MED">Medium</string>
+  <string name="SETTINGS_HIGH">High</string>
+  <string name="SETTINGS_NO_REQ">No Requirement</string>
+  <string name="SETTINGS_POWER">Power</string>
+  <string name="SETTINGS_ACCURACY">Accuracy</string>
   <string name="SETTINGS_ADVANCED">Advanced Settings</string>
-  <string name="SETTINGS_GPS_TITLE">Positions</string>
+  <string name="SETTINGS_GPS_TITLE">Positions Provider</string>
   <string name="SETTINGS_GPS_GPS_TITLE">Use GPS positioning</string>
   <string name="SETTINGS_GPS_GSM_TITLE">Use GSM positioning</string>
   <string name="SETTINGS_GPS_PAS_TITLE">Use Passive positioning</string>

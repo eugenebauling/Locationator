@@ -100,7 +100,7 @@ namespace Locationator
         {
             get
             {
-                var setting = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetBoolean(Constants.SETTINGS_KEY_GPS_PAS, false);
+                var setting = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetBoolean(Constants.SETTINGS_KEY_GPS_PAS, true);
                 return setting;
             }
         }

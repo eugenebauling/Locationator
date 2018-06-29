@@ -23,6 +23,18 @@
             <SwitchPreference
                 android:key="GpsUsePassive"
                 android:title="@string/SETTINGS_GPS_PAS_TITLE" />
+            <ListPreference
+                android:title="@string/SETTINGS_ACCURACY"
+                android:entries="@array/gps_magnitudes"
+                android:entryValues="@array/gps_magnitudes_values"
+                android:defaultValue="0"
+                android:key="GpsAccuracy" />
+            <ListPreference
+                android:title="@string/SETTINGS_POWER"
+                android:entries="@array/gps_magnitudes"
+                android:entryValues="@array/gps_magnitudes_values"
+                android:defaultValue="0"
+                android:key="GpsPower" />
         </PreferenceScreen>
         <EditTextPreference
             android:title="@string/SETTINGS_GPS_TIME_UPDATE_FREQUENCY"
