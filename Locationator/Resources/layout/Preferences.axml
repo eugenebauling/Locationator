@@ -8,4 +8,33 @@
             android:defaultValue="0"
             android:key="GpsSetting" />
     </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/SETTINGS_ADVANCED">
+        <PreferenceScreen
+            android:key="GpsAdvanced"
+            android:title="@string/SETTINGS_GPS_ADVANCED"
+            android:persistent="false">
+            <SwitchPreference
+                android:key="GpsUseGps"
+                android:title="@string/SETTINGS_GPS_GPS_TITLE" />
+            <SwitchPreference
+                android:key="GpsUseGsm"
+                android:title="@string/SETTINGS_GPS_GSM_TITLE" />
+            <SwitchPreference
+                android:key="GpsUsePassive"
+                android:title="@string/SETTINGS_GPS_PAS_TITLE" />
+        </PreferenceScreen>
+        <EditTextPreference
+            android:title="@string/SETTINGS_GPS_TIME_UPDATE_FREQUENCY"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:key="GpsUpdateMilSec"
+            android:dialogTitle="@string/SETTINGS_GPS_TITLE_MILLISECONDS" />
+        <EditTextPreference
+            android:title="@string/SETTINGS_GPS_DISTANCE_UPDATE_FREQUENCY"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:key="GpsUpdateMetres"
+            android:dialogTitle="@string/SETTINGS_GPS_TITLE_METRES" />
+    </PreferenceCategory>
 </PreferenceScreen>

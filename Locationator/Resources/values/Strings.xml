@@ -27,10 +27,22 @@
 
   <string name="BTN_OK">Ok</string>
 
+  <string name="SETTINGS_ADVANCED">Advanced Settings</string>
   <string name="SETTINGS_GPS_TITLE">Positions</string>
+  <string name="SETTINGS_GPS_GPS_TITLE">Use GPS positioning</string>
+  <string name="SETTINGS_GPS_GSM_TITLE">Use GSM positioning</string>
+  <string name="SETTINGS_GPS_PAS_TITLE">Use Passive positioning</string>
   <string name="SETTINGS_GPS_SELECT">Select a position provider</string>
   <string name="SETTINGS_GPS_SETTING_SYS">System</string>
   <string name="SETTINGS_GPS_SETTING_MAN">Manual</string>
   <string name="SETTINGS_GPS_SETTING_DESC_SYSTEM">Lets the Android OS decide which mechanism to use to collect positions</string>
   <string name="SETTINGS_GPS_SETTING_DESC_MANUAL">User can specify which combination of mechanisms the app must use</string>
+  <string name="SETTINGS_GPS_ADVANCED">Advanced GPS Settings</string>
+  <string name="SETTINGS_GPS_ADVANCED_SYS">Change settings like accuracy of locations and battery usage options</string>
+  <string name="SETTINGS_GPS_ADVANCED_MAN">Change settings like the combination of location providers to use</string>
+  <string name="SETTINGS_GPS_TITLE_MILLISECONDS">Position update in milliseconds</string>
+  <string name="SETTINGS_GPS_TITLE_METRES">Position update in metres</string>
+  <string name="SETTINGS_GPS_TIME_UPDATE_FREQUENCY">Time update frequency</string>
+  <string name="SETTINGS_GPS_DISTANCE_UPDATE_FREQUENCY">Distance update frequency</string>
+  
 </resources>

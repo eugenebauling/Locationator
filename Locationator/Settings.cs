@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.Locations;
 using Android.OS;
+using Android.Preferences;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
@@ -16,23 +17,109 @@ namespace Locationator
 {
     public static class Settings
     {
-        public static GpsPointCollectionMode GpsLocationMode { get; set; }
+        public static GpsPointCollectionMode GpsLocationMode {
+            get
+            {
+                //Lovely hack because GetDefaultSharedPreferences.GetString is the only one that works. Everything else throws Java cast exceptions
+                string setting = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(Constants.SETTINGS_KEY_GPS_TYPE, "1");
+                switch (Convert.ToInt32(setting))
+                {
+                    case 0:
+                        return GpsPointCollectionMode.Manual;
+
+                    case 1:
+                        return
+                            GpsPointCollectionMode.SystemSpecified;
+                }
+
+                return GpsPointCollectionMode.SystemSpecified;
+            }
+        }
+        public static Accuracy GPSAutoAccuracy
+        {
+            get
+            {
+                string setting = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(Constants.SETTING_KEY_GPS_ACCURACY, "0");
+
+                switch (Convert.ToInt32(setting))
+                {
+                    case 0:
+                        return Accuracy.NoRequirement;
+                    case 1:
+                        return Accuracy.Low;
+                        //return Accuracy.Fine;
+                    case 2:
+                        return Accuracy.Medium;
+                        //return Accuracy.Coarse;
+                    case 3:
+                        return Accuracy.High;
+                }
+
+                return Accuracy.NoRequirement;
+            }
+        }
+        public static Power GPSAutoPower
+        {
+            get
+            {
+                string setting = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(Constants.SETTING_KEY_GPS_POWER, "0");
+                switch (Convert.ToInt32(setting))
+                {
+                    case 0:
+                        return Power.NoRequirement;
+                    case 1:
+                        return Power.Low;
+                    //return Accuracy.Fine;
+                    case 2:
+                        return Power.Medium;
+                    //return Accuracy.Coarse;
+                    case 3:
+                        return Power.High;
+                }
+
+                return Power.NoRequirement;
+            }
+        }
+        public static bool UseGPS
+        {
+            get
+            {
+                return Convert.ToBoolean(PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(Constants.SETTINGS_KEY_GPS_GPS, "false"));
+            }
+        }
+        public static bool UseNetwork
+        {
+            get
+            {
+                return Convert.ToBoolean(PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(Constants.SETTINGS_KEY_GPS_GSM, "false"));
+            }
+        }
+        public static bool UsePassive
+        {
+            get
+            {
+                return Convert.ToBoolean(PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(Constants.SETTINGS_KEY_GPS_PAS, "false"));
+            }
+        }
+        public static int GpsLocationUpdateIntervalMilliseconds
+        {
+            get
+            {
+                return Convert.ToInt32(PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(Constants.SETTINGS_KEY_GPS_UPDATE_INTERVAL_MILLISECONDS, "1000"));
+            }
+        }
+        public static int GpsLocationUpdateIntervalMetres
+        {
+            get
+            {
+                return Convert.ToInt32(PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(Constants.SETTINGS_KEY_GPS_UPDATE_INTERVAL_METRES, "1"));
+            }
+        }
         public static DataAccessMode DataAccessMode { get; set; }
-        public static Accuracy GPSAutoAccuracy { get; set; }
-        public static Power GPSAutoPower { get; set; }
-        public static bool UseGPS { get; set; }
-        public static bool UseNetwork { get; set; }
-        public static bool UsePassive { get; set; }
 
         public static void SetDefaults()
         {
-            GpsLocationMode = GpsPointCollectionMode.SystemSpecified;
-            GPSAutoAccuracy = Accuracy.Fine;
-            GPSAutoPower = Power.High;
             DataAccessMode = DataAccessMode.WebService;
-            UseGPS = true;
-            UseNetwork = true;
-            UsePassive = true;
         }
     }
 }

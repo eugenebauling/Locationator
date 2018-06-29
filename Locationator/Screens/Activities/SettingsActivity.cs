@@ -57,29 +57,38 @@ namespace Locationator.Screens.Activities
         private void SetGpsSetting()
         {
 
-            ListPreference pref = (ListPreference)FindPreference(Constants.SETTINGS_KEY_GPS_TYPE);
-            
+            ListPreference gpsTypePref = (ListPreference)FindPreference(Constants.SETTINGS_KEY_GPS_TYPE);
+            PreferenceScreen advancedGpsPref = (PreferenceScreen)FindPreference(Constants.SETTINGS_KEY_GPS_ADVANCED);
+
             var setting = PreferenceManager.GetDefaultSharedPreferences(this).GetString(Constants.SETTINGS_KEY_GPS_TYPE, "");
             int title = 0;
             int summary = 0;
+            int advSummary = 0;
             int dialogTitle = Resource.String.SETTINGS_GPS_SELECT;
 
             if (Convert.ToInt32(setting) == (int)GpsPointCollectionMode.SystemSpecified)
             {
                 title = Resource.String.SETTINGS_GPS_SETTING_SYS;
                 summary = Resource.String.SETTINGS_GPS_SETTING_DESC_SYSTEM;
+                advSummary = Resource.String.SETTINGS_GPS_ADVANCED_SYS;
             }
             else if (Convert.ToInt32(setting) == (int)GpsPointCollectionMode.Manual)
             {
                 title = Resource.String.SETTINGS_GPS_SETTING_MAN;
                 summary = Resource.String.SETTINGS_GPS_SETTING_DESC_MANUAL;
+                advSummary = Resource.String.SETTINGS_GPS_ADVANCED_MAN;
             }
 
-            if (pref != null)
+            if (gpsTypePref != null)
             {
-                pref.SetSummary(summary);
-                pref.SetTitle(title);
-                pref.SetDialogTitle(dialogTitle);
+                gpsTypePref.SetSummary(summary);
+                gpsTypePref.SetTitle(title);
+                gpsTypePref.SetDialogTitle(dialogTitle);
+            }
+
+            if (advancedGpsPref != null)
+            {
+                advancedGpsPref.SetSummary(advSummary);
             }
         }
     }

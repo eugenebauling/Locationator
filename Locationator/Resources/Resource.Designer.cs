@@ -3211,23 +3211,56 @@ namespace Locationator
 			// aapt resource value: 0x7f080037
 			public const int MENU_SETTINGS = 2131230775;
 			
-			// aapt resource value: 0x7f08003c
-			public const int SETTINGS_GPS_SELECT = 2131230780;
+			// aapt resource value: 0x7f08003b
+			public const int SETTINGS_ADVANCED = 2131230779;
 			
-			// aapt resource value: 0x7f080040
-			public const int SETTINGS_GPS_SETTING_DESC_MANUAL = 2131230784;
+			// aapt resource value: 0x7f080045
+			public const int SETTINGS_GPS_ADVANCED = 2131230789;
 			
-			// aapt resource value: 0x7f08003f
-			public const int SETTINGS_GPS_SETTING_DESC_SYSTEM = 2131230783;
+			// aapt resource value: 0x7f080047
+			public const int SETTINGS_GPS_ADVANCED_MAN = 2131230791;
 			
-			// aapt resource value: 0x7f08003e
-			public const int SETTINGS_GPS_SETTING_MAN = 2131230782;
+			// aapt resource value: 0x7f080046
+			public const int SETTINGS_GPS_ADVANCED_SYS = 2131230790;
+			
+			// aapt resource value: 0x7f08004b
+			public const int SETTINGS_GPS_DISTANCE_UPDATE_FREQUENCY = 2131230795;
 			
 			// aapt resource value: 0x7f08003d
-			public const int SETTINGS_GPS_SETTING_SYS = 2131230781;
+			public const int SETTINGS_GPS_GPS_TITLE = 2131230781;
 			
-			// aapt resource value: 0x7f08003b
-			public const int SETTINGS_GPS_TITLE = 2131230779;
+			// aapt resource value: 0x7f08003e
+			public const int SETTINGS_GPS_GSM_TITLE = 2131230782;
+			
+			// aapt resource value: 0x7f08003f
+			public const int SETTINGS_GPS_PAS_TITLE = 2131230783;
+			
+			// aapt resource value: 0x7f080040
+			public const int SETTINGS_GPS_SELECT = 2131230784;
+			
+			// aapt resource value: 0x7f080044
+			public const int SETTINGS_GPS_SETTING_DESC_MANUAL = 2131230788;
+			
+			// aapt resource value: 0x7f080043
+			public const int SETTINGS_GPS_SETTING_DESC_SYSTEM = 2131230787;
+			
+			// aapt resource value: 0x7f080042
+			public const int SETTINGS_GPS_SETTING_MAN = 2131230786;
+			
+			// aapt resource value: 0x7f080041
+			public const int SETTINGS_GPS_SETTING_SYS = 2131230785;
+			
+			// aapt resource value: 0x7f08004a
+			public const int SETTINGS_GPS_TIME_UPDATE_FREQUENCY = 2131230794;
+			
+			// aapt resource value: 0x7f08003c
+			public const int SETTINGS_GPS_TITLE = 2131230780;
+			
+			// aapt resource value: 0x7f080049
+			public const int SETTINGS_GPS_TITLE_METRES = 2131230793;
+			
+			// aapt resource value: 0x7f080048
+			public const int SETTINGS_GPS_TITLE_MILLISECONDS = 2131230792;
 			
 			// aapt resource value: 0x7f08002e
 			public const int TAG_COORD_LOG = 2131230766;

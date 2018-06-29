@@ -99,7 +99,7 @@ namespace Locationator.LocationProvider
                 Log.Info(tag, "Provider: " + provider);
                 if (provider != null)
                 {
-                    locMgr.RequestLocationUpdates(provider, Constants.GPS_LOCATION_UPDATE_INTERVAL_TIME, Constants.GPS_LOCATION_UPDATE_INTERVAL_DISTANCE_METRES, this);
+                    locMgr.RequestLocationUpdates(provider, Settings.GpsLocationUpdateIntervalMilliseconds, Settings.GpsLocationUpdateIntervalMetres, this);
 
                     status.Started = true;
                     status.Error = String.Empty;
@@ -159,7 +159,7 @@ namespace Locationator.LocationProvider
             PointProviderStatus status = new PointProviderStatus();
             try
             {
-                locMgr.RequestLocationUpdates(LocationManager.GpsProvider, Constants.GPS_LOCATION_UPDATE_INTERVAL_TIME, Constants.GPS_LOCATION_UPDATE_INTERVAL_DISTANCE_METRES, this);
+                locMgr.RequestLocationUpdates(LocationManager.GpsProvider, Settings.GpsLocationUpdateIntervalMilliseconds, Settings.GpsLocationUpdateIntervalMetres, this);
 
                 status.Started = true;
                 status.Error = String.Empty;
@@ -178,7 +178,7 @@ namespace Locationator.LocationProvider
             PointProviderStatus status = new PointProviderStatus();
             try
             {
-                locMgr.RequestLocationUpdates(LocationManager.NetworkProvider, Constants.GPS_LOCATION_UPDATE_INTERVAL_TIME, Constants.GPS_LOCATION_UPDATE_INTERVAL_DISTANCE_METRES, this);
+                locMgr.RequestLocationUpdates(LocationManager.NetworkProvider, Settings.GpsLocationUpdateIntervalMilliseconds, Settings.GpsLocationUpdateIntervalMetres, this);
 
                 status.Started = true;
                 status.Error = String.Empty;
@@ -197,7 +197,7 @@ namespace Locationator.LocationProvider
             PointProviderStatus status = new PointProviderStatus();
             try
             {
-                locMgr.RequestLocationUpdates(LocationManager.PassiveProvider, Constants.GPS_LOCATION_UPDATE_INTERVAL_TIME, Constants.GPS_LOCATION_UPDATE_INTERVAL_DISTANCE_METRES, this);
+                locMgr.RequestLocationUpdates(LocationManager.PassiveProvider, Settings.GpsLocationUpdateIntervalMilliseconds, Settings.GpsLocationUpdateIntervalMetres, this);
 
                 status.Started = true;
                 status.Error = String.Empty;
